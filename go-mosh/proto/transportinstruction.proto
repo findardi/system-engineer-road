@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+option optimize_for = LITE_RUNTIME;
+
+package TransportBuffers;
+
+option go_package = "github.com/findardi/system-engineer-road/go-mosh/internal/pb/transportpb";
+
+message Instruction {
+  optional uint32 protocol_version = 1;
+
+  optional uint64 old_num = 2;
+  optional uint64 new_num = 3;
+  optional uint64 ack_num = 4;
+  optional uint64 throwaway_num = 5;
+
+  optional bytes diff = 6;
+
+  optional bytes chaff = 7;
+}
