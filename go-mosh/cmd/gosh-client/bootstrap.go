@@ -41,6 +41,7 @@ var connectRe = regexp.MustCompile(`^GOSH CONNECT (\d+) ([A-Za-z0-9/+]{22})$`)
 
 type session struct {
 	IP, Port, Key string
+	Server        string // binary name in ~/.gosh/bin, needed to start the relay
 }
 
 func bootstrap(ssh []string, host string) (session, error) {
@@ -60,7 +61,7 @@ func bootstrap(ssh []string, host string) (session, error) {
 
 	s, need, err := parse(out)
 	if need == "" {
-		s.IP = ip
+		s.IP, s.Server = ip, name
 		return s, err
 	}
 
@@ -80,7 +81,7 @@ func bootstrap(ssh []string, host string) (session, error) {
 		return session{}, err
 	}
 	s, _, err = parse(out)
-	s.IP = ip
+	s.IP, s.Server = ip, name
 	return s, err
 }
 
@@ -122,10 +123,16 @@ func serverName() (string, error) {
 	return "gosh-server-" + hex.EncodeToString(h.Sum(nil))[:16], err
 }
 
-func remote(ssh []string, host, script string, stdin []byte, args ...string) ([]byte, error) {
+// sshCommand runs script under sh on host, so ~/.ssh/config, agent,
+// known_hosts and ProxyJump all work exactly like plain ssh.
+func sshCommand(ssh []string, host, script string, args ...string) *exec.Cmd {
 	cmdLine := "sh -c '" + script + "' gosh " + strings.Join(args, " ")
 	argv := append(append(ssh[1:], "-T", host, "--"), cmdLine)
-	cmd := exec.Command(ssh[0], argv...)
+	return exec.Command(ssh[0], argv...)
+}
+
+func remote(ssh []string, host, script string, stdin []byte, args ...string) ([]byte, error) {
+	cmd := sshCommand(ssh, host, script, args...)
 	if stdin != nil {
 		cmd.Stdin = bytes.NewReader(stdin)
 	}

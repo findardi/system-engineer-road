@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"crypto/rand"
 	"encoding/base64"
 	"fmt"
@@ -10,6 +11,9 @@ import (
 	"os/exec"
 	"syscall"
 	"time"
+
+	"github.com/findardi/system-engineer-road/go-mosh/internal/network"
+	"github.com/findardi/system-engineer-road/go-mosh/internal/statesync"
 )
 
 const (
@@ -30,6 +34,12 @@ func main() {
 		err = runNew()
 	case "daemon":
 		err = runDaemon()
+	case "relay": // internal: started by the client over SSH when UDP is blocked
+		if len(os.Args) != 3 {
+			err = fmt.Errorf("usage: gosh-server relay PORT")
+			break
+		}
+		err = network.Relay(os.Stdin, os.Stdout, net.JoinHostPort("127.0.0.1", os.Args[2]))
 	default:
 		err = fmt.Errorf("unknown command %q", os.Args[1])
 	}
@@ -105,17 +115,51 @@ func runDaemon() error {
 		return err
 	}
 
-	_ = key
-
-	conn, err := net.FilePacketConn(os.NewFile(3, "udp"))
+	sess, err := network.NewSession(string(key))
 	if err != nil {
 		return err
 	}
 
-	defer conn.Close()
+	f := os.NewFile(3, "udp")
+	pc, err := net.FilePacketConn(f)
+	f.Close()
 
-	conn.SetReadDeadline(time.Now().Add(60 * time.Second))
-	buf := make([]byte, 2048)
-	conn.ReadFrom(buf)
-	return nil
+	if err != nil {
+		return err
+	}
+
+	conn := network.NewServer(sess, pc.(*net.UDPConn))
+	empty := &statesync.UserStream{}
+	t := network.NewTransport(conn, empty, empty)
+
+	// ponytail: phase 4 echo server over SSP; phase 5 replaces it with a shell on a PTY.
+	// Exits after 60s without hearing the client (SSP acks every 3s keep it alive).
+	started := time.Now()
+	for {
+		timer := time.NewTimer(min(t.WaitTime(), time.Second))
+		select {
+		case d := <-conn.Incoming():
+			if t.Receive(d) != nil {
+				break // forged, corrupted or reflected: drop silently
+			}
+			var input statesync.UserStream
+			input.Apply(t.RemoteDiff())
+			for _, e := range input.Events() {
+				if !e.Resize {
+					// Uppercase, so the echo is distinguishable from the terminal's local echo.
+					t.Current().PushBytes(bytes.ToUpper([]byte{e.Byte}))
+				}
+			}
+		case <-timer.C:
+			last := conn.LastHeard()
+			if last.IsZero() {
+				last = started
+			}
+			if time.Since(last) > 60*time.Second {
+				return nil
+			}
+		}
+		timer.Stop()
+		t.Tick() // send errors are transient: SSP resends from the acked state
+	}
 }
