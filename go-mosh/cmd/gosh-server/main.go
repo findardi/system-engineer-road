@@ -9,16 +9,22 @@ import (
 	"net"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"syscall"
 	"time"
 
+	"github.com/creack/pty"
 	"github.com/findardi/system-engineer-road/go-mosh/internal/network"
 	"github.com/findardi/system-engineer-road/go-mosh/internal/statesync"
 )
 
 const (
-	portLow  = 60001
-	portHigh = 60999
+	portLow    = 60001
+	portHigh   = 60999
+	maxUnacked = 1 << 20 // shell output waiting for the client's ack
+
+	noClientTimeout = 60 * time.Second // nobody connected after start, as mosh-server
+	idleTimeout     = 30 * time.Minute // client silent this long: assume it is gone for good
 )
 
 func main() {
@@ -129,37 +135,108 @@ func runDaemon() error {
 	}
 
 	conn := network.NewServer(sess, pc.(*net.UDPConn))
-	empty := &statesync.UserStream{}
-	t := network.NewTransport(conn, empty, empty)
 
-	// ponytail: phase 4 echo server over SSP; phase 5 replaces it with a shell on a PTY.
-	// Exits after 60s without hearing the client (SSP acks every 3s keep it alive).
+	shell, err := startShell()
+	if err != nil {
+		return err
+	}
+	defer shell.Close() // closing the PTY master hangs up the shell
+
+	t := network.NewTransport(conn, &statesync.HostStream{}, &statesync.UserStream{})
+	output := make(chan []byte)
+	go func() {
+		b := make([]byte, 16*1024)
+		for {
+			n, err := shell.Read(b)
+			if err != nil {
+				close(output)
+				return
+			}
+
+			output <- bytes.Clone(b[:n])
+		}
+	}()
+
 	started := time.Now()
 	for {
-		timer := time.NewTimer(min(t.WaitTime(), time.Second))
+		// Backpressure: stop reading the shell while too much output is unacked,
+		// so an absent client cannot make the next diff grow without bound.
+		out := output
+		if t.ShutdownInProgress() || len(t.Current().Bytes()) > maxUnacked {
+			out = nil
+		}
+
+		timer := time.NewTimer(t.WaitTime())
 		select {
+		case b, ok := <-out:
+			if !ok {
+				t.StartShutdown() // shell exited: tell the client
+				break
+			}
+			t.Current().PushBytes(b)
 		case d := <-conn.Incoming():
 			if t.Receive(d) != nil {
-				break // forged, corrupted or reflected: drop silently
+				break
 			}
+
 			var input statesync.UserStream
 			input.Apply(t.RemoteDiff())
+
+			var keys []byte
 			for _, e := range input.Events() {
-				if !e.Resize {
-					// Uppercase, so the echo is distinguishable from the terminal's local echo.
-					t.Current().PushBytes(bytes.ToUpper([]byte{e.Byte}))
+				if e.Resize {
+					pty.Setsize(shell, &pty.Winsize{Rows: uint16(e.Height), Cols: uint16(e.Width)})
+				} else {
+					keys = append(keys, e.Byte)
 				}
 			}
+
+			shell.Write(keys)
+
 		case <-timer.C:
-			last := conn.LastHeard()
-			if last.IsZero() {
-				last = started
-			}
-			if time.Since(last) > 60*time.Second {
-				return nil
-			}
 		}
+
 		timer.Stop()
+
+		switch {
+		case t.ShutdownInProgress() && (t.ShutdownAcknowledged() || t.ShutdownAckTimedOut()):
+			return nil
+		case t.CounterpartyShutdownAckSent():
+			return nil
+		case sessionExpired(started, conn.LastHeard(), time.Now()):
+			return nil
+		}
 		t.Tick() // send errors are transient: SSP resends from the acked state
 	}
+}
+
+// sessionExpired reports whether the daemon should give up on its client.
+// A connected client sends an SSP ack at least every 3s, even when the user
+// is not typing, so only a client that is really gone (killed, laptop asleep)
+// trips idleTimeout.
+func sessionExpired(started, lastHeard, now time.Time) bool {
+	if lastHeard.IsZero() {
+		return now.Sub(started) > noClientTimeout
+	}
+	return now.Sub(lastHeard) > idleTimeout
+}
+
+// startShell runs the user's login shell on a new PTY, as mosh-server does.
+func startShell() (*os.File, error) {
+	sh := os.Getenv("SHELL")
+	if sh == "" {
+		sh = "/bin/sh"
+	}
+
+	cmd := exec.Command(sh)
+	cmd.Args[0] = "-" + filepath.Base(sh)
+	cmd.Env = append(os.Environ(), "TERM=xterm-256color")
+
+	f, err := pty.StartWithSize(cmd, &pty.Winsize{Rows: 24, Cols: 80})
+	if err != nil {
+		return nil, err
+	}
+
+	go cmd.Wait()
+	return f, nil
 }

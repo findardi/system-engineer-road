@@ -37,6 +37,8 @@ const (
 	ackDelay           = 100   // delayed ack after receiving data
 	activeRetryTimeout = 10000 // stop resending if peer silent this long
 	never              = math.MaxInt64
+	shutdownRetries    = 16
+	shutdownNum        = math.MaxUint64
 )
 
 var errProtocolVersion = errors.New("peer speaks a different protocol version")
@@ -62,6 +64,9 @@ type Transport[M State[M], R State[R]] struct {
 	pendingAck    bool   // received data: ack soon
 	lastHeard     int64  // last time a new remote state arrived
 	mindelayClock int64  // first unsent change to current, or never
+	shutdown      bool
+	shutdownTries int
+	shutdownStart int64
 
 	// SendDelay batches changes for this long before sending (mosh: 8ms server, 1ms client).
 	SendDelay int64
@@ -139,6 +144,10 @@ func (t *Transport[M, R]) calculateTimers() {
 	default:
 		t.nextSendTime = never
 	}
+
+	if t.shutdown || t.ackNum == shutdownNum {
+		t.nextAckTime = t.sent[len(t.sent)-1].ms + t.sendInterval()
+	}
 }
 
 // WaitTime is how long the event loop may sleep before calling Tick again.
@@ -183,6 +192,9 @@ func (t *Transport[M, R]) Tick() error {
 func (t *Transport[M, R]) sendEmptyAck() error {
 	now := t.conn.ms()
 	newNum := t.sent[len(t.sent)-1].num + 1
+	if t.shutdown {
+		newNum = shutdownNum
+	}
 	t.addSentState(now, newNum, t.current.Clone())
 	err := t.sendInFragments(nil, newNum)
 	t.nextAckTime = now + ackInterval
@@ -194,10 +206,15 @@ func (t *Transport[M, R]) sendToReceiver(diff []byte) error {
 	now := t.conn.ms()
 	last := &t.sent[len(t.sent)-1]
 	newNum := last.num
-	if t.current.Equal(last.state) {
-		last.ms = now // resend of the last state
-	} else {
+	if !t.current.Equal(last.state) {
 		newNum++
+	}
+	if t.shutdown {
+		newNum = shutdownNum
+	}
+	if newNum == last.num {
+		last.ms = now
+	} else {
 		t.addSentState(now, newNum, t.current.Clone())
 	}
 	err := t.sendInFragments(diff, newNum)
@@ -273,6 +290,9 @@ func (t *Transport[M, R]) sendInFragments(diff []byte, newNum uint64) error {
 		return err
 	}
 	t.pendingAck = false
+	if newNum == shutdownNum {
+		t.shutdownTries++
+	}
 	for _, f := range frags {
 		if serr := t.conn.Send(f.marshal()); serr != nil {
 			err = serr // keep going: later fragments may still get through
@@ -376,6 +396,25 @@ func (t *Transport[M, R]) Receive(d Datagram) error {
 		t.pendingAck = true
 	}
 	return nil
+}
+
+func (t *Transport[M, R]) StartShutdown() {
+	if !t.shutdown {
+		t.shutdown, t.shutdownStart = true, t.conn.ms()
+	}
+}
+
+func (t *Transport[M, R]) ShutdownInProgress() bool { return t.shutdown }
+
+func (t *Transport[M, R]) ShutdownAcknowledged() bool { return t.sent[0].num == shutdownNum }
+
+// ShutdownAckTimedOut: give up waiting for the peer, e.g. it is gone.
+func (t *Transport[M, R]) ShutdownAckTimedOut() bool {
+	return t.shutdown && (t.shutdownTries >= shutdownRetries || t.conn.ms()-t.shutdownStart >= activeRetryTimeout)
+}
+
+func (t *Transport[M, R]) CounterpartyShutdownAckSent() bool {
+	return t.frag.last != nil && t.frag.last.GetAckNum() == shutdownNum
 }
 
 // processThrowaway drops received states older than what the sender will

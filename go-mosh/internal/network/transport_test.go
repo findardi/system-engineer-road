@@ -137,3 +137,17 @@ func parseMust(t *testing.T, b []byte) fragment {
 	}
 	return f
 }
+
+func TestShutdownHandshake(t *testing.T) {
+	cli, srv := transportPair(t)
+	cli.Current().PushBytes([]byte("x")) // first contact, so the server knows where the client is
+	var got []byte
+	pump(t, cli, srv, 0, func() bool { return len(remoteBytes(srv, &got)) == 1 })
+
+	srv.StartShutdown() // e.g. the shell exited
+	pump(t, cli, srv, 0.2, func() bool { return cli.CounterpartyShutdownAckSent() })
+	pump(t, cli, srv, 0.2, func() bool { return srv.ShutdownAcknowledged() || srv.ShutdownAckTimedOut() })
+	if !srv.ShutdownAcknowledged() {
+		t.Fatal("server gave up instead of getting the ack")
+	}
+}
