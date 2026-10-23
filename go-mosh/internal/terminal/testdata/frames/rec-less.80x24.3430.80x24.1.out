@@ -1,0 +1,23 @@
+[?25l[1;5H  }[K[2;5H  if[2;10H( s[2;15H_t[2;19Hle ) {
+        fb->set_window_title( newtitle );
+      }
+    }[K
+  }[K
+}[K
+[K
+/* scroll down or terminfo indn */
+static void CSI_SD( Framebuffer* fb, Dispatcher* dispatch )
+{[K
+  fb->scroll( dispatch->getparam( 0, 1 ) );
+}[K
+[K
+static Function func_CSI_SD( CSI, "S", CSI_SD );
+
+/* scroll u[17;13H or[17;17Ht[17;23Hfo rin */
+static void CSI_SU( Framebuffer* fb, Dispatcher* dispatch )
+{[K
+  fb->scroll( -dispatch->getparam( 0, 1 ) );
+}[K
+[K
+static Fu[23;11Hcti[23;15Hn[23;17Hfunc_CSI_SU([23;30HCSI, "T", CSI_SU );
+[0;7m(END)[0m[K[?25h

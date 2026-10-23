@@ -24,7 +24,7 @@ var arches = map[string]string{
 }
 
 const runScript = `b="$HOME/.gosh/bin/$1"
-[ -x "$b" ] && exec "$b" new
+[ -x "$b" ] && exec "$b" new "$2"
 echo "GOSH NEED $(uname -sm)"`
 
 const installScript = `set -e
@@ -35,16 +35,17 @@ cat > "$b.tmp"
 [ "$(sha256sum < "$b.tmp" | cut -d" " -f1)" = "$2" ] || { rm -f "$b.tmp"; echo "gosh: checksum mismatch" >&2; exit 1; }
 chmod 700 "$b.tmp"
 mv "$b.tmp" "$b"
-exec "$b" new`
+exec "$b" new "$3"`
 
 var connectRe = regexp.MustCompile(`^GOSH CONNECT (\d+) ([A-Za-z0-9/+]{22})$`)
 
 type session struct {
 	IP, Port, Key string
+	Width, Height int    // window size at start: the initial screen on both sides
 	Server        string // binary name in ~/.gosh/bin, needed to start the relay
 }
 
-func bootstrap(ssh []string, host string) (session, error) {
+func bootstrap(ssh []string, host string, width, height int) (session, error) {
 	ip, err := resolveIP(ssh, host)
 	if err != nil {
 		return session{}, err
@@ -54,14 +55,15 @@ func bootstrap(ssh []string, host string) (session, error) {
 		return session{}, err
 	}
 
-	out, err := remote(ssh, host, runScript, nil, name)
+	size := fmt.Sprintf("%dx%d", width, height)
+	out, err := remote(ssh, host, runScript, nil, name, size)
 	if err != nil {
 		return session{}, err
 	}
 
 	s, need, err := parse(out)
 	if need == "" {
-		s.IP, s.Server = ip, name
+		s.IP, s.Server, s.Width, s.Height = ip, name, width, height
 		return s, err
 	}
 
@@ -77,11 +79,11 @@ func bootstrap(ssh []string, host string) (session, error) {
 
 	sum := sha256.Sum256(bin)
 	fmt.Fprintf(os.Stderr, "gosh: installing server on %s (%s, %d KB)\n", host, arch, len(bin)/1024)
-	if out, err = remote(ssh, host, installScript, bin, name, hex.EncodeToString(sum[:])); err != nil {
+	if out, err = remote(ssh, host, installScript, bin, name, hex.EncodeToString(sum[:]), size); err != nil {
 		return session{}, err
 	}
 	s, _, err = parse(out)
-	s.IP, s.Server = ip, name
+	s.IP, s.Server, s.Width, s.Height = ip, name, width, height
 	return s, err
 }
 

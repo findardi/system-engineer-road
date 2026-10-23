@@ -1,0 +1,27 @@
+[r[0m[H[2J[?25l[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+E325: ATTENTION[K
+Found a swap file by the name "/home/ardis/project/shell-project/mosh/src/termin[K
+al/.parser.cc.swp"[K
+[10X[12;11Howned by: ardis   dated: Thu Oct 22 16:28:42 2026[K
+[9X[13;10Hfile name: /home/ardis/project/shell-project/mosh/src/terminal/parser.c[K
+c[K
+[10X[15;11Hmodified: YES[K
+[9X[16;10Huser name: ardis   host name: panemumsi2[K
+[8X[17;9Hprocess ID: 82511[K
+While opening file "/home/ardis/project/shell-project/mosh/src/terminal/parser.c[K
+c"[K
+[13X[20;14Hdated: Mon Sep 14 16:27:41 2026[K
+[K
+(1) Another program may be editing the same file.  If this is the case,[K
+    be careful not to end up with two different instances of the same[10X[23;80Ha[K
+lready exists![K
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)uit, (A)bort:.swp"[K
+-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quitproject/shell-pr[K
+[K[25;74H[?25h[0m]8;;\[?2004h[?1003l[?1002l[?1001l[?1000l[?1004h[?1015l[?1006l[?1005l

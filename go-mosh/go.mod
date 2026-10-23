@@ -6,6 +6,7 @@ require (
 	github.com/ProtonMail/go-crypto v1.5.2
 	github.com/creack/pty v1.1.24
 	golang.org/x/term v0.47.0
+	golang.org/x/text v0.43.0
 	google.golang.org/protobuf v1.36.12
 )
 

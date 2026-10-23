@@ -19,9 +19,8 @@ import (
 )
 
 const (
-	portLow    = 60001
-	portHigh   = 60999
-	maxUnacked = 1 << 20 // shell output waiting for the client's ack
+	portLow  = 60001
+	portHigh = 60999
 
 	noClientTimeout = 60 * time.Second // nobody connected after start, as mosh-server
 	idleTimeout     = 30 * time.Minute // client silent this long: assume it is gone for good
@@ -37,9 +36,9 @@ func main() {
 
 	switch os.Args[1] {
 	case "new":
-		err = runNew()
+		err = runNew(os.Args[2:])
 	case "daemon":
-		err = runDaemon()
+		err = runDaemon(os.Args[2:])
 	case "relay": // internal: started by the client over SSH when UDP is blocked
 		if len(os.Args) != 3 {
 			err = fmt.Errorf("usage: gosh-server relay PORT")
@@ -56,7 +55,20 @@ func main() {
 	}
 }
 
-func runNew() error {
+// parseSize reads the client's window size, "COLSxROWS". Both sides of SSP
+// must start from the same screen, and mosh-client starts from its window.
+func parseSize(args []string) (w, h int) {
+	w, h = 80, 24
+	if len(args) > 0 {
+		var cw, ch int
+		if n, _ := fmt.Sscanf(args[0], "%dx%d", &cw, &ch); n == 2 && cw > 0 && ch > 0 && cw <= 1000 && ch <= 1000 {
+			w, h = cw, ch
+		}
+	}
+	return w, h
+}
+
+func runNew(args []string) error {
 	conn, port, err := listen()
 	if err != nil {
 		return err
@@ -81,7 +93,8 @@ func runNew() error {
 		return err
 	}
 
-	cmd := exec.Command(self, "daemon")
+	cols, rows := parseSize(args)
+	cmd := exec.Command(self, "daemon", fmt.Sprintf("%dx%d", cols, rows))
 	cmd.Stdin = r
 	cmd.ExtraFiles = []*os.File{sock}
 
@@ -115,7 +128,7 @@ func listen() (*net.UDPConn, int, error) {
 	return nil, 0, fmt.Errorf("no free UDP port in %d-%d", portLow, portHigh)
 }
 
-func runDaemon() error {
+func runDaemon(args []string) error {
 	key, err := io.ReadAll(os.Stdin)
 	if err != nil {
 		return err
@@ -136,13 +149,15 @@ func runDaemon() error {
 
 	conn := network.NewServer(sess, pc.(*net.UDPConn))
 
-	shell, err := startShell()
+	w, h := parseSize(args)
+	shell, err := startShell(w, h)
 	if err != nil {
 		return err
 	}
 	defer shell.Close() // closing the PTY master hangs up the shell
 
-	t := network.NewTransport(conn, &statesync.HostStream{}, &statesync.UserStream{})
+	// Both sides start from the same blank screen, sized like the client's window.
+	t := network.NewTransport(conn, statesync.NewComplete(w, h), &statesync.UserStream{})
 	output := make(chan []byte)
 	go func() {
 		b := make([]byte, 16*1024)
@@ -159,10 +174,8 @@ func runDaemon() error {
 
 	started := time.Now()
 	for {
-		// Backpressure: stop reading the shell while too much output is unacked,
-		// so an absent client cannot make the next diff grow without bound.
 		out := output
-		if t.ShutdownInProgress() || len(t.Current().Bytes()) > maxUnacked {
+		if t.ShutdownInProgress() {
 			out = nil
 		}
 
@@ -173,7 +186,11 @@ func runDaemon() error {
 				t.StartShutdown() // shell exited: tell the client
 				break
 			}
-			t.Current().PushBytes(b)
+			// The screen absorbs any amount of output, so the diff stays one
+			// screen in size however long the client is away.
+			if reply := t.Current().Act(b); len(reply) > 0 {
+				shell.Write(reply) // e.g. a cursor position report the program asked for
+			}
 		case d := <-conn.Incoming():
 			if t.Receive(d) != nil {
 				break
@@ -182,12 +199,14 @@ func runDaemon() error {
 			var input statesync.UserStream
 			input.Apply(t.RemoteDiff())
 
+			emu := t.Current().Emulator()
 			var keys []byte
 			for _, e := range input.Events() {
 				if e.Resize {
+					emu.Resize(int(e.Width), int(e.Height))
 					pty.Setsize(shell, &pty.Winsize{Rows: uint16(e.Height), Cols: uint16(e.Width)})
 				} else {
-					keys = append(keys, e.Byte)
+					keys = append(keys, emu.UserByte(e.Byte)...)
 				}
 			}
 
@@ -222,7 +241,7 @@ func sessionExpired(started, lastHeard, now time.Time) bool {
 }
 
 // startShell runs the user's login shell on a new PTY, as mosh-server does.
-func startShell() (*os.File, error) {
+func startShell(w, h int) (*os.File, error) {
 	sh := os.Getenv("SHELL")
 	if sh == "" {
 		sh = "/bin/sh"
@@ -232,7 +251,7 @@ func startShell() (*os.File, error) {
 	cmd.Args[0] = "-" + filepath.Base(sh)
 	cmd.Env = append(os.Environ(), "TERM=xterm-256color")
 
-	f, err := pty.StartWithSize(cmd, &pty.Winsize{Rows: 24, Cols: 80})
+	f, err := pty.StartWithSize(cmd, &pty.Winsize{Rows: uint16(h), Cols: uint16(w)})
 	if err != nil {
 		return nil, err
 	}

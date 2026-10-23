@@ -31,7 +31,11 @@ func main() {
 	}
 
 	ssh, host := strings.Fields(*sshCmd), flag.Arg(0)
-	s, err := bootstrap(ssh, host)
+	width, height := 80, 24
+	if w, h, err := term.GetSize(int(os.Stdin.Fd())); err == nil {
+		width, height = w, h
+	}
+	s, err := bootstrap(ssh, host, width, height)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "gosh:", err)
 		os.Exit(1)
@@ -56,7 +60,8 @@ func shellLoop(s session, relay network.StreamDialer) error {
 		return err
 	}
 
-	t := network.NewTransport(conn, &statesync.UserStream{}, &statesync.HostStream{})
+	// Same blank start as the server, sized like our window; see gosh-server.
+	t := network.NewTransport(conn, &statesync.UserStream{}, statesync.NewComplete(s.Width, s.Height))
 	t.SendDelay = 1
 
 	fd := int(os.Stdin.Fd())
@@ -64,9 +69,10 @@ func shellLoop(s session, relay network.StreamDialer) error {
 	if err != nil {
 		return fmt.Errorf("stdin is not a terminal: %w", err)
 	}
-
 	defer term.Restore(fd, saved)
-	notice := func(msg string) { fmt.Fprintf(os.Stderr, "\r\n[gosh: %s]\r\n", msg) }
+
+	scr := newScreen(os.Stdout, s.Width, s.Height)
+	defer scr.close()
 
 	resize := make(chan os.Signal, 1)
 	signal.Notify(resize, syscall.SIGWINCH)
@@ -86,9 +92,12 @@ func shellLoop(s session, relay network.StreamDialer) error {
 	}()
 
 	fallback := time.After(3 * time.Second)
-	lost, escape := false, false
+	var flash string // short-lived notice
+	var flashUntil time.Time
+	escape := false
 	for {
-		timer := time.NewTimer(t.WaitTime())
+		// Wake at least every second to keep the "last contact" notice current.
+		timer := time.NewTimer(min(t.WaitTime(), time.Second))
 		select {
 		case b, ok := <-input:
 			if !ok {
@@ -123,17 +132,12 @@ func shellLoop(s session, relay network.StreamDialer) error {
 			if w, h, err := term.GetSize(fd); err == nil && !t.ShutdownInProgress() {
 				t.Current().PushResize(int32(w), int32(h))
 			}
+			scr.invalidate() // the terminal reflowed its contents
 		case d := <-conn.Incoming():
-			if t.Receive(d) != nil {
-				break
-			}
-
-			var screen statesync.HostStream
-			screen.Apply(t.RemoteDiff())
-			os.Stdout.Write(screen.Bytes())
+			t.Receive(d) // the screen is repainted below
 		case <-fallback:
 			if conn.LastHeard().IsZero() {
-				notice("no UDP reply, falling back to SSH relay")
+				flash, flashUntil = "gosh: no UDP reply, using SSH relay", time.Now().Add(3*time.Second)
 				if err := conn.UseStream(relay); err != nil {
 					return err
 				}
@@ -150,14 +154,14 @@ func shellLoop(s session, relay network.StreamDialer) error {
 		}
 		t.Tick()
 
-		last := conn.LastHeard()
-		if silent := !last.IsZero() && time.Since(last) > 5*time.Second; silent != lost {
-			lost = silent
-			if lost {
-				notice("connection lost, retrying...")
-			} else {
-				notice("reconnected")
-			}
+		notice := ""
+		if time.Now().Before(flashUntil) {
+			notice = flash
 		}
+		// SSP acks arrive at least every 3s, so silence means trouble.
+		if last := conn.LastHeard(); !last.IsZero() && time.Since(last) > 5*time.Second {
+			notice = fmt.Sprintf("gosh: last contact %s ago. [To quit: Ctrl-^ .]", time.Since(last).Round(time.Second))
+		}
+		scr.paint(t.Remote(), notice)
 	}
 }

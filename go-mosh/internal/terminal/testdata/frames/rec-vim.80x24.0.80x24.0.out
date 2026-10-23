@@ -1,0 +1,24 @@
+[?5l[r[0m[H[2J[?25l[10X[1;11Howned by: ardis   dated: Thu Oct 22 16:28:42 2026[K
+[9X[2;10Hfile name: /home/ardis/project/shell-project/mosh/src/terminal/parser.c
+c[K
+[10X[4;11Hmodified: YES[K
+[9X[5;10Huser name: ardis   host name: panemumsi2[K
+[8X[6;9Hprocess ID: 82511[K
+While opening file "/home/ardis/project/shell-project/mosh/src/terminal/parser.c
+c"[K
+[13X[9;14Hdated: Mon Sep 14 16:27:41 2026[K
+[K
+(1) Another program may be editing the same file.  If this is the case,[K
+    be careful not to end up with two different instances of the same[K
+    file when making changes.  Quit, or continue with caution.[K
+(2) An edit session for this file crashed.[K
+    If this is the case, use ":recover" or "vim -r /home/ardis/project/shell-pro
+ject/mosh/src/terminal/parser.cc"[K
+    to recover the changes (see ":help recovery").[K
+    If you did this already, delete the swap file "/home/ardis/project/shell-pro
+ject/mosh/src/terminal/.parser.cc.swp"[K
+    to avoid this message.[K
+[K
+Swap file "/home/ardis/project/shell-project/mosh/src/terminal/.parser.cc.swp" a
+lready exists![K
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)uit, (A)bort:[K[24;74H[?25h[0m]8;;\[?2004h[?1003l[?1002l[?1001l[?1000l[?1004h[?1015l[?1006l[?1005l

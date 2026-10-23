@@ -1,0 +1,404 @@
+total 1596944
+drwxr-xr-x 6 root root      118784 Oct 15 10:55  [0m[01;34m.[0m
+drwxr-xr-x 9 root root        4096 Oct 15 10:55  [01;34m..[0m
+-rwxr-xr-x 1 root root       14440 Apr  6  2026  [01;32m4channels[0m
+-rwxr-xr-x 1 root root          37 Jun 27 05:32  [01;32m7z[0m
+-rwxr-xr-x 1 root root          38 Jun 27 05:32  [01;32m7za[0m
+-rwxr-xr-x 1 root root          38 Jun 27 05:32  [01;32m7zr[0m
+-rwxr-xr-x 1 root root      797064 Jul  7 00:40  [01;32mFileCheck[0m
+lrwxrwxrwx 1 root root          27 Mar 14  2026  [01;36mFileCheck-21[0m -> ../lib/llvm21/bin/FileCheck
+-rwxr-xr-x 1 root root        1458 Jul 14 04:24  [01;32mMagick++-config[0m
+-rwxr-xr-x 1 root root        1720 Jul 14 04:24  [01;32mMagickCore-config[0m
+-rwxr-xr-x 1 root root        1539 Jul 14 04:24  [01;32mMagickWand-config[0m
+-rwxr-xr-x 1 root root     2697864 Aug  5  2025  [01;32mModemManager[0m
+-rwxr-xr-x 1 root root     3833552 May 14 21:02  [01;32mNetworkManager[0m
+lrwxrwxrwx 1 root root          33 Jun 17 23:41  [01;36mQtWebEngineProcess6[0m -> ../lib/qt6/bin/QtWebEngineProcess
+-rwxr-xr-x 1 root root       85944 Mar 30  2026  [01;32mSvtAv1EncApp[0m
+-rwxr-xr-x 1 root root       88168 Apr 10  2026  [01;32mSvtHevcEncApp[0m
+-rwxr-xr-x 1 root root       44888 Jul  7 00:40  [01;32mUnicodeNameMappingGenerator[0m
+lrwxrwxrwx 1 root root          45 Mar 14  2026  [01;36mUnicodeNameMappingGenerator-21[0m -> ../lib/llvm21/bin/UnicodeNameMappingGenerator
+lrwxrwxrwx 1 root root           4 Jul  8 23:09  [01;36mX[0m -> Xorg
+-rwxr-xr-x 1 root root         271 Jul  8 23:09  [01;32mXorg[0m
+-rwxr-xr-x 1 root root     3036712 Jul  8 23:12  [01;32mXwayland[0m
+-rwxr-xr-x 1 root root      172648 Jul  8 02:02  [01;32mZXingQtCamReader[0m
+-rwxr-xr-x 1 root root      215488 Jul  8 02:02  [01;32mZXingReader[0m
+-rwxr-xr-x 1 root root       80200 Jul  8 02:02  [01;32mZXingWriter[0m
+-rwxr-xr-x 1 root root       67888 Apr 24 10:49 [01;32m'['[0m
+-rwxr-xr-x 1 root root       39600 Mar 20  2026  [01;32ma52dec[0m
+-rwxr-xr-x 1 root root       18528 Aug  5  2025  [01;32maafire[0m
+-rwxr-xr-x 1 root root       14432 Aug  5  2025  [01;32maainfo[0m
+-rwxr-xr-x 1 root root        1413 Aug  5  2025  [01;32maalib-config[0m
+-rwxr-xr-x 1 root root       14432 Aug  5  2025  [01;32maasavefont[0m
+-rwxr-xr-x 1 root root       14432 Aug  5  2025  [01;32maatest[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:42  [01;32mabw2html[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:42  [01;32mabw2raw[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:42  [01;32mabw2text[0m
+-rwxr-xr-x 1 root root       14616 May  4  2025  [01;32maccessdb[0m
+-rwxr-xr-x 2 root root       37723 Jul 12  2025  [01;32maclocal[0m
+-rwxr-xr-x 2 root root       37723 Jul 12  2025  [01;32maclocal-1.18[0m
+-rwxr-xr-x 1 root root       22696 Jun  3 23:16  [01;32maconnect[0m
+-rwxr-xr-x 1 root root       18616 Mar 16  2026  [01;32maddftinfo[0m
+-rwxr-xr-x 1 root root        3075 Jul 12 22:07  [01;32maddgnupghome[0m
+-rwxr-xr-x 1 root root       14504 Jun 17 17:47  [01;32maddpart[0m
+-rwxr-xr-x 1 root root       31416 Jun 27 19:08  [01;32maddr2line[0m
+-rwxr-xr-x 1 root root       34976 Jul  8 16:55  [01;32madig[0m
+-rwxr-xr-x 1 root root       43176 Jul  5 21:36  [01;32madvtest[0m
+-rwxr-xr-x 1 root root       38928 Jan 11  2026  [01;32mafcclient[0m
+-rwxr-xr-x 1 root root        5227 May  7 14:11  [01;32maffixcompress[0m
+-rwxr-xr-x 1 root root      176169 Mar 16  2026  [01;32mafmtodit[0m
+-rwxr-xr-x 1 root root       14352 May  1  2025  [01;32mag-backup[0m
+-rwxr-xr-x 1 root root       22544 May  1  2025  [01;32mag-tool[0m
+-rwxr-xr-x 1 root root       85352 Jun 17 17:47  [01;32magetty[0m
+-rwxr-xr-x 1 root root       34936 Jul  1  2024  [01;32maha[0m
+-rwxr-xr-x 1 root root       14416 Jul  8 16:55  [01;32mahost[0m
+-rwxr-xr-x 1 root root     8322688 Apr 14  2026  [01;32malacritty[0m
+-rwxr-xr-x 1 root root       30197 Jun  3 23:16  [01;32malsa-info.sh[0m
+-rwxr-xr-x 1 root root       55616 Jun  3 23:16  [01;32malsabat[0m
+-rwxr-xr-x 1 root root        4136 Jun  3 23:16  [01;32malsabat-test.sh[0m
+-rwxr-xr-x 1 root root      155144 Jun  3 23:16  [01;32malsactl[0m
+-rwxr-xr-x 1 root root       89240 Jun  3 23:16  [01;32malsaloop[0m
+-rwxr-xr-x 1 root root       94288 Jun  3 23:16  [01;32malsamixer[0m
+-rwxr-xr-x 1 root root       88232 Jun  3 23:16  [01;32malsatplg[0m
+-rwxr-xr-x 1 root root       31360 Jun  3 23:16  [01;32malsaucm[0m
+-rwxr-xr-x 1 root root      276968 May 12 18:03  [01;32malsoft-config[0m
+-rwxr-xr-x 1 root root       18544 Dec 27  2025  [01;32mambiguous_words[0m
+-rwxr-xr-x 1 root root       49856 Jul  9 16:21  [01;32mamdgpu-arch[0m
+-rwxr-xr-x 1 root root       14424 Jun  3 04:06  [01;32mamdgpu_stress[0m
+-rwxr-xr-x 1 root root       26792 Jun  3 23:16  [01;32mamidi[0m
+-rwxr-xr-x 1 root root       63736 Jun  3 23:16  [01;32mamixer[0m
+-rwxr-xr-x 1 root root       14376 Jul 13  2024  [01;32mamrnb-dec[0m
+-rwxr-xr-x 1 root root       14376 Jul 13  2024  [01;32mamrnb-enc[0m
+-rwxr-xr-x 1 root root       14376 Jul 13  2024  [01;32mamrwb-dec[0m
+-rwxr-xr-x 1 root root        2668 Jun 16  2025  [01;32mamuFormat.sh[0m
+-rwxr-xr-x 1 root root       14512 May  7 14:11  [01;32manalyze[0m
+-rwxr-xr-x 1 root root         557 Jul  9 16:21  [01;32manalyze-build[0m
+-rwxr-xr-x 1 root root      616672 Mar 28  2026  [01;32mananicy-cpp[0m
+lrwxrwxrwx 1 root root          30 May 15 17:56  [01;36mandroiddeployqt6[0m -> ../lib/qt6/bin/androiddeployqt
+lrwxrwxrwx 1 root root           6 Jul 14 04:24  [01;36manimate[0m -> magick
+-rwxr-xr-x 1 root root       27332 Mar 21  2026  [01;32manytovcd.sh[0m
+-rwxr-xr-x 1 root root      227800 May 23 13:32  [01;32maomdec[0m
+-rwxr-xr-x 1 root root      334088 May 23 13:32  [01;32maomenc[0m
+-rwxr-xr-x 1 root root       84176 Jun  3 23:16  [01;32maplay[0m
+-rwxr-xr-x 1 root root       22696 Jun  3 23:16  [01;32maplaymidi[0m
+-rwxr-xr-x 1 root root       22712 Jun  3 23:16  [01;32maplaymidi2[0m
+-rwxr-xr-x 1 root root        2217 Jul 12 22:07  [01;32mapplygnupgdefaults[0m
+-rwxr-xr-x 1 root root      145664 Jun 19 05:54  [01;32mappstreamcli[0m
+lrwxrwxrwx 1 root root           6 May  4  2025  [01;36mapropos[0m -> whatis
+-rwxr-xr-x 1 root root       55760 Jun 27 19:08  [01;32mar[0m
+-rwxr-xr-x 1 root root        4964 Jan 18  2025  [01;32marchlinux-java[0m
+-rwxr-xr-x 1 root root        2858 Jul  8 22:18  [01;32marchlinux-keyring-wkd-sync[0m
+lrwxrwxrwx 1 root root           5 Jun  3 23:16  [01;36marecord[0m -> aplay
+-rwxr-xr-x 1 root root       35000 Jun  3 23:16  [01;32marecordmidi[0m
+-rwxr-xr-x 1 root root       26816 Jun  3 23:16  [01;32marecordmidi2[0m
+-rwxr-xr-x 1 root root       38928 Feb 16  2025  [01;32margon2[0m
+-rwxr-xr-x 1 root root     5100704 Jul  7 14:47  [01;32maria_chk[0m
+-rwxr-xr-x 1 root root      455112 Jul  7 14:47  [01;32maria_dump_log[0m
+-rwxr-xr-x 1 root root     4807464 Jul  7 14:47  [01;32maria_ftdump[0m
+-rwxr-xr-x 1 root root     4882784 Jul  7 14:47  [01;32maria_pack[0m
+-rwxr-xr-x 1 root root     5042504 Jul  7 14:47  [01;32maria_read_log[0m
+-rwxr-xr-x 1 root root      481640 Jul  7 14:47  [01;32maria_s3_copy[0m
+-rwxr-xr-x 1 root root      204024 Jul  2 20:31  [01;32mark[0m
+-rwxr-xr-x 1 root root       14424 Jun 17 21:50  [01;32marpaname[0m
+-rwxr-xr-x 1 root root       26736 Jun 17 17:50  [01;32marpd[0m
+-rwxr-xr-x 1 root root       26640 Jun  6  2025  [01;32marping[0m
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-nft[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-nft-restore[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-nft-save[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-restore[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-save[0m -> xtables-nft-multi
+lrwxrwxrwx 1 root root          17 Apr 12  2026  [01;36marptables-translate[0m -> xtables-nft-multi
+-rwxr-xr-x 1 root root      937024 Jun 27 19:08  [01;32mas[0m
+-rwxr-xr-x 1 root root       34984 Jun  3 23:16  [01;32maseqdump[0m
+-rwxr-xr-x 1 root root       26848 Jun  3 23:16  [01;32maseqnet[0m
+-rwxr-xr-x 1 root root       18600 Jun  3 23:16  [01;32maseqsend[0m
+-rwxr-xr-x 1 root root       30984 Jun 16 21:01  [01;32maserver[0m
+-rwxr-xr-x 1 root root       18528 Jan 11  2026  [01;32masn1Coding[0m
+-rwxr-xr-x 1 root root       22624 Jan 11  2026  [01;32masn1Decoding[0m
+-rwxr-xr-x 1 root root       14432 Jan 11  2026  [01;32masn1Parser[0m
+lrwxrwxrwx 1 root root          24 Jun 14 21:52  [01;36massistant6[0m -> ../lib/qt6/bin/assistant
+-rwxr-xr-x 1 root root       14416 Jun 30 12:05  [01;32mattr[0m
+-rwxr-xr-x 1 root root       96544 Jun 14  2025  [01;32maucat[0m
+-rwxr-xr-x 1 root root       63600 Mar 28  2026  [01;32mauditctl[0m
+-rwxr-xr-x 1 root root      141456 Mar 28  2026  [01;32mauditd[0m
+-rwxr-xr-x 1 root root        4180 Mar 28  2026  [01;32maugenrules[0m
+-rwxr-xr-x 1 root root       18448 Mar 28  2026  [01;32maulast[0m
+-rwxr-xr-x 1 root root       14352 Mar 28  2026  [01;32maulastlog[0m
+-rwxr-xr-x 1 root root      116864 Mar 28  2026  [01;32maureport[0m
+-rwxr-xr-x 1 root root      121008 Mar 28  2026  [01;32mausearch[0m
+-rwxr-xr-x 1 root root       14352 Mar 28  2026  [01;32mausyscall[0m
+-rwxr-xr-x 1 root root        6769 Mar 21  2026  [01;32mautoconf[0m
+-rwxr-xr-x 1 root root       10379 Mar 21  2026  [01;32mautoheader[0m
+-rwxr-xr-x 1 root root       35014 Mar 21  2026  [01;32mautom4te[0m
+-rwxr-xr-x 2 root root      265481 Jul 12  2025  [01;32mautomake[0m
+-rwxr-xr-x 2 root root      265481 Jul 12  2025  [01;32mautomake-1.18[0m
+-rwxr-xr-x 1 root root       28158 Feb 17  2026  [01;32mautopoint[0m
+-rwxr-xr-x 1 root root       38347 Mar 21  2026  [01;32mautoreconf[0m
+-rwxr-xr-x 1 root root       17250 Mar 21  2026  [01;32mautoscan[0m
+-rwxr-xr-x 1 root root       34097 Mar 21  2026  [01;32mautoupdate[0m
+-rwxr-xr-x 1 root root       35000 Jun 26 06:17  [01;32mavahi-autoipd[0m
+-rwxr-xr-x 1 root root        7322 Jun 26 06:17  [01;32mavahi-bookmarks[0m
+-rwxr-xr-x 1 root root       30904 Jun 26 06:17  [01;32mavahi-browse[0m
+lrwxrwxrwx 1 root root          12 Jun 26 06:17  [01;36mavahi-browse-domains[0m -> avahi-browse
+-rwxr-xr-x 1 root root      149696 Jun 26 06:17  [01;32mavahi-daemon[0m
+-rwxr-xr-x 1 root root       13821 Jun 26 06:17  [01;32mavahi-discover[0m
+-rwxr-xr-x 1 root root       18536 Jun 26 06:17  [01;32mavahi-discover-standalone[0m
+-rwxr-xr-x 1 root root       26800 Jun 26 06:17  [01;32mavahi-dnsconfd[0m
+-rwxr-xr-x 1 root root       26800 Jun 26 06:17  [01;32mavahi-publish[0m
+lrwxrwxrwx 1 root root          13 Jun 26 06:17  [01;36mavahi-publish-address[0m -> avahi-publish
+lrwxrwxrwx 1 root root          13 Jun 26 06:17  [01;36mavahi-publish-service[0m -> avahi-publish
+-rwxr-xr-x 1 root root       18608 Jun 26 06:17  [01;32mavahi-resolve[0m
+lrwxrwxrwx 1 root root          13 Jun 26 06:17  [01;36mavahi-resolve-address[0m -> avahi-resolve
+lrwxrwxrwx 1 root root          13 Jun 26 06:17  [01;36mavahi-resolve-host-name[0m -> avahi-resolve
+-rwxr-xr-x 1 root root       14520 Jun 26 06:17  [01;32mavahi-set-host-name[0m
+-rwxr-xr-x 1 root root       47192 May 27 14:00  [01;32mavifdec[0m
+-rwxr-xr-x 1 root root      129112 May 27 14:00  [01;32mavifenc[0m
+-rwxr-xr-x 1 root root      371000 May 27 14:00  [01;32mavifgainmaputil[0m
+-rwxr-xr-x 1 root root       22728 Jul  5 21:36  [01;32mavinfo[0m
+-rwxr-xr-x 1 root root       18944 Jul  5 21:36  [01;32mavtest[0m
+lrwxrwxrwx 1 root root           4 Jul 13 03:20  [01;36mawk[0m -> gawk
+-rwxr-xr-x 1 root root         814 Apr 19  2026  [01;32maws[0m
+-rwxr-xr-x 1 root root        1135 Apr 19  2026  [01;32maws_completer[0m
+-rwxr-xr-x 1 root root        1808 Apr 19  2026  [01;32maws_zsh_completer.sh[0m
+-rwxr-xr-x 1 root root       84128 Jun  3 23:16  [01;32maxfer[0m
+-rwxr-xr-x 1 root root       80184 Apr 24 10:49  [01;32mb2sum[0m
+-rwxr-xr-x 1 root root        7339 Oct 29  2023  [01;32mbackup[0m
+-rwxr-xr-x 1 root root       34848 Mar 12  2026  [01;32mbadblocks[0m
+-rwxr-xr-x 1 root root       18632 Jul  2 18:11  [01;32mbaloo_filemetadata_temp_extractor[0m
+-rwxr-xr-x 1 root root      171264 Jun 14 00:17  [01;32mbalooctl6[0m
+-rwxr-xr-x 1 root root       30904 Jun 14 00:17  [01;32mbaloosearch6[0m
+-rwxr-xr-x 1 root root       59576 Jun 14 00:17  [01;32mbalooshow6[0m
+-rwxr-xr-x 1 root root       63800 Apr 24 10:49  [01;32mbase32[0m
+-rwxr-xr-x 1 root root       63800 Apr 24 10:49  [01;32mbase64[0m
+-rwxr-xr-x 1 root root       55608 Apr 24 10:49  [01;32mbasename[0m
+-rwxr-xr-x 1 root root       80184 Apr 24 10:49  [01;32mbasenc[0m
+-rwxr-xr-x 1 root root     1260720 Jun 28 23:28  [01;32mbash[0m
+-r-xr-xr-x 1 root root        7304 Jun 28 23:28  [01;32mbashbug[0m
+-rwxr-xr-x 1 root root     5781824 Feb 16  2026  [01;32mbat[0m
+-rwxr-xr-x 1 root root       14488 Jul  5 21:36  [01;32mbcmfw[0m
+-rwxr-xr-x 1 root root       14352 Mar 11  2026  [01;32mbd_info[0m
+-rwxr-xr-x 1 root root       14360 Mar 11  2026  [01;32mbd_list_titles[0m
+-rwxr-xr-x 1 root root       14352 Mar 11  2026  [01;32mbd_splice[0m
+-rwxr-xr-x 1 root root      104792 Jul  5 21:36  [01;32mbdaddr[0m
+-rwxr-xr-x 1 root root       23312 Dec 24  2025  [01;32mbiosdecode[0m
+-rwxr-xr-x 1 root root      590520 Sep  9  2024  [01;32mbison[0m
+-rwxr-xr-x 1 root root       22688 Jun 17 17:47  [01;32mbits[0m
+-rwxr-xr-x 1 root root       16416 May 20 19:08  [01;32mblkdeactivate[0m
+-rwxr-xr-x 1 root root       22696 Jun 17 17:47  [01;32mblkdiscard[0m
+-rwxr-xr-x 1 root root       55496 Jun 17 17:47  [01;32mblkid[0m
+-rwxr-xr-x 1 root root       22688 Jun 17 17:47  [01;32mblkpr[0m
+-rwxr-xr-x 1 root root       34984 Jun 17 17:47  [01;32mblkzone[0m
+-rwxr-xr-x 1 root root       30888 Jun 17 17:47  [01;32mblockdev[0m
+-rwxr-xr-x 1 root root      147592 Jul  1 02:46  [01;32mbluedevil-sendfile[0m
+-rwxr-xr-x 1 root root      142984 Jul  1 02:46  [01;32mbluedevil-wizard[0m
+-rwxr-xr-x 1 root root       39072 Jul  5 21:36  [01;32mbluemoon[0m
+-rwxr-xr-x 1 root root      275352 Jul  5 21:36  [01;32mbluetooth-player[0m
+-rwxr-xr-x 1 root root      625544 Jul  5 21:36  [01;32mbluetoothctl[0m
+-rwxr-xr-x 1 root root       60368 Jul  5 21:36  [01;32mbneptest[0m
+-rwxr-xr-x 1 root root      146080 Apr  4  2026  [01;32mboltctl[0m
+-rwxr-xr-x 1 root root       18472 Jun 27  2025  [01;32mbomtool[0m
+-rwxr-xr-x 1 root root       23289 Nov 24  2025  [01;32mbond2team[0m
+-rwxr-xr-x 1 root root      203432 Jun 26 18:27  [01;32mbootctl[0m
+-rwxr-xr-x 1 root root     1784864 May  9 00:57  [01;32mbotan[0m
+-rwxr-xr-x 1 root root       14376 Jul 13  2024  [01;32mboxdumper[0m
+-rwxr-xr-x 1 root root      114912 Jul  5 18:47  [01;32mbpf_asm[0m
+-rwxr-xr-x 1 root root       80776 Jul  5 18:47  [01;32mbpf_dbg[0m
+-rwxr-xr-x 1 root root     2773896 Jul  5 18:47  [01;32mbpf_jit_disasm[0m
+-rwxr-xr-x 1 root root     3069680 Jul  5 18:47  [01;32mbpftool[0m
+-rwxr-xr-x 1 root root         427 Sep  4 23:39  [01;32mbrave[0m
+-rwxr-xr-x 1 root root       14520 Jul  1 02:40  [01;32mbreeze-settings6[0m
+-rwxr-xr-x 1 root root      160040 Jun 17 17:50  [01;32mbridge[0m
+-rwxr-xr-x 1 root root      125024 Mar 25  2026  [01;32mbroadwayd[0m
+-rwxr-xr-x 1 root root       34832 Jan 11  2026  [01;32mbrotli[0m
+-rwxr-xr-x 1 root root       14352 Jan 21  2026  [01;32mbs2bconvert[0m
+-rwxr-xr-x 1 root root       18448 Jan 21  2026  [01;32mbs2bstream[0m
+-rwxr-xr-x 1 root root        5278 Jan 17  2026  [01;32mbscalc[0m
+-rwxr-xr-x 1 root root       14496 Jun 26 17:38  [01;32mbsdcat[0m
+-rwxr-xr-x 1 root root       43168 Jun 26 17:38  [01;32mbsdcpio[0m
+-rwxr-xr-x 1 root root       71840 Jun 26 17:38  [01;32mbsdtar[0m
+-rwxr-xr-x 1 root root       34936 Jun 26 17:38  [01;32mbsdunzip[0m
+lrwxrwxrwx 1 root root           4 Jun 26 06:17  [01;36mbshell[0m -> bssh
+-rwxr-xr-x 1 root root       18592 Jun 26 06:17  [01;32mbssh[0m
+-rwxr-xr-x 1 root root       30880 Jul  5 21:36  [01;32mbtattach[0m
+-rwxr-xr-x 1 root root       22688 Jul  5 21:36  [01;32mbtconfig[0m
+-rwxr-xr-x 1 root root        1320 Jan 11  2026  [01;32mbtfdiff[0m
+-rwxr-xr-x 1 root root      154264 Jul  5 21:36  [01;32mbtgatt-client[0m
+-rwxr-xr-x 1 root root       96760 Jul  5 21:36  [01;32mbtgatt-server[0m
+-rwxr-xr-x 1 root root       30880 Jul  5 21:36  [01;32mbtinfo[0m
+-rwxr-xr-x 1 root root       52264 Jul  5 21:36  [01;32mbtiotest[0m
+-rwxr-xr-x 1 root root      190792 Jul  5 21:36  [01;32mbtmgmt[0m
+-rwxr-xr-x 1 root root     1491488 Jul  5 21:36  [01;32mbtmon[0m
+-rwxr-xr-x 1 root root     1630104 May  2 10:24  [01;32mbtop[0m
+-rwxr-xr-x 1 root root       84344 Jul  5 21:36  [01;32mbtpclient[0m
+-rwxr-xr-x 1 root root      104664 Jul  5 21:36  [01;32mbtpclientctl[0m
+-rwxr-xr-x 1 root root       47448 Jul  5 21:36  [01;32mbtproxy[0m
+-rwxr-xr-x 1 root root     1413560 May 10 06:32  [01;32mbtrfs[0m
+-rwxr-xr-x 1 root root      789912 May 10 06:32  [01;32mbtrfs-convert[0m
+-rwxr-xr-x 1 root root      708000 May 10 06:32  [01;32mbtrfs-find-root[0m
+-rwxr-xr-x 1 root root      753112 May 10 06:32  [01;32mbtrfs-image[0m
+-rwxr-xr-x 1 root root      708000 May 10 06:32  [01;32mbtrfs-map-logical[0m
+-rwxr-xr-x 1 root root      703912 May 10 06:32  [01;32mbtrfs-select-super[0m
+lrwxrwxrwx 1 root root           5 May 10 06:32  [01;36mbtrfsck[0m -> btrfs
+-rwxr-xr-x 1 root root      748976 May 10 06:32  [01;32mbtrfstune[0m
+-rwxr-xr-x 1 root root       18592 Jul  5 21:36  [01;32mbtsnoop[0m
+-rwxr-xr-x 1 root root      329936 Jul  7 00:40  [01;32mbugpoint[0m
+lrwxrwxrwx 1 root root          26 Mar 14  2026  [01;36mbugpoint-21[0m -> ../lib/llvm21/bin/bugpoint
+lrwxrwxrwx 1 root root           5 Mar 19  2024  [01;36mbunzip2[0m -> bzip2
+-rwxr-xr-x 1 root root       90872 Jun 26 18:27  [01;32mbusctl[0m
+lrwxrwxrwx 1 root root           4 Jun 26 06:17  [01;36mbvnc[0m -> bssh
+-rwxr-xr-x 1 root root       84464 Apr 26 03:49  [01;32mbwrap[0m
+lrwxrwxrwx 1 root root           5 Mar 19  2024  [01;36mbzcat[0m -> bzip2
+-rwxr-xr-x 1 root root        2140 Mar 19  2024  [01;32mbzdiff[0m
+-rwxr-xr-x 1 root root        2054 Mar 19  2024  [01;32mbzgrep[0m
+-rwxr-xr-x 1 root root       39000 Mar 19  2024  [01;32mbzip2[0m
+-rwxr-xr-x 1 root root       14352 Mar 19  2024  [01;32mbzip2recover[0m
+-rwxr-xr-x 1 root root        1259 Mar 19  2024  [01;32mbzmore[0m
+-rwxr-xr-x 4 root root     2455144 Jul 11 18:31  [01;32mc++[0m
+-rwxr-xr-x 1 root root       26792 Jun 27 19:08  [01;32mc++filt[0m
+-rwxr-xr-x 1 root root    29910312 Jul  9 16:21  [01;32mc-index-test[0m
+-rwxr-xr-x 1 root root         224 Jul 11 18:31  [01;32mc89[0m
+-rwxr-xr-x 1 root root         215 Jul 11 18:31  [01;32mc99[0m
+-rwxr-xr-x 1 root root        6944 Jun 10 02:53  [01;32mc_rehash[0m
+-rwxr-xr-x 1 root root        1645 Mar 20  2026  [01;32mcaca-config[0m
+-rwxr-xr-x 1 root root       14496 Mar 20  2026  [01;32mcacaclock[0m
+-rwxr-xr-x 1 root root      284776 Mar 20  2026  [01;32mcacademo[0m
+-rwxr-xr-x 1 root root       18448 Mar 20  2026  [01;32mcacafire[0m
+-rwxr-xr-x 1 root root       14352 Mar 20  2026  [01;32mcacaplay[0m
+-rwxr-xr-x 1 root root       14352 Mar 20  2026  [01;32mcacaserver[0m
+-rwxr-xr-x 1 root root       22640 Mar 20  2026  [01;32mcacaview[0m
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_check[0m -> pdata_tools
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_dump[0m -> pdata_tools
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_metadata_size[0m -> pdata_tools
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_repair[0m -> pdata_tools
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_restore[0m -> pdata_tools
+lrwxrwxrwx 1 root root          11 Jun 25 06:06  [01;36mcache_writeback[0m -> pdata_tools
+-rwxr-xr-x 1 root root        4415 Jun 27 03:12  [01;32mcachyos-bugreport.sh[0m
+-rwxr-xr-x 1 root root    14081344 Jul 11 05:57  [01;32mcachyos-hello[0m
+-rwxr-xr-x 1 root root      996912 Jun 23 05:09  [01;32mcachyos-kernel-manager[0m
+-rwxr-xr-x 1 root root     1525400 Mar 13  2026  [01;32mcachyos-pi[0m
+-rwxr-xr-x 1 root root        5264 Jun 17 12:22  [01;32mcachyos-rate-mirrors[0m
+-rwxr-xr-x 1 root root        2952 Mar 14  2025  [01;32mcairo-trace[0m
+-rwxr-xr-x 1 root root       64000 Jun 17 17:47  [01;32mcal[0m
+-rwxr-xr-x 1 root root        2926 Oct 23  2025  [01;32mcalc_tickadj[0m
+-rwxr-xr-x 1 root root       18440 Oct 24  2025  [01;32mcanberra-boot[0m
+-rwxr-xr-x 1 root root       14432 Oct 24  2025  [01;32mcanberra-gtk-play[0m
+-rwxr-xr-x 1 root root       46176 Apr  9  2026  [01;32mcapsh[0m
+lrwxrwxrwx 1 root root           3 Mar 22  2026  [01;36mcaptoinfo[0m -> tic
+-rwxr-xr-x 1 root root     1937040 Apr  9  2026  [01;32mcaptree[0m
+-rwxr-xr-x 1 root root       67960 Apr 24 10:49  [01;32mcat[0m
+-rwxr-xr-x 1 root root       31296 May  4  2025  [01;32mcatman[0m
+lrwxrwxrwx 1 root root           3 Jul 11 18:31  [01;36mcc[0m -> gcc
+-rwxr-xr-x 1 root root       26720 Dec 24  2025  [01;32mcd-drive[0m
+-rwxr-xr-x 1 root root       43104 Dec 24  2025  [01;32mcd-info[0m
+-rwxr-xr-x 1 root root       67736 Mar 20  2026  [01;32mcd-paranoia[0m
+-rwxr-xr-x 1 root root       26720 Dec 24  2025  [01;32mcd-read[0m
+-rwxr-xr-x 1 root root       38944 Dec 24  2025  [01;32mcdda-player[0m
+-rwxr-xr-x 1 root root       68880 Dec 23  2023  [01;32mcdparanoia[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [01;32mcdr2raw[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [01;32mcdr2text[0m
+-rwxr-xr-x 1 root root       18608 May 31 15:41  [01;32mcdr2xhtml[0m
+-rwxr-xr-x 1 root root       69264 Apr 13  2026  [01;32mcdrwtool[0m
+-rwxr-xr-x 1 root root      303288 Mar  1  2026  [01;32mcec-compliance[0m
+-rwxr-xr-x 1 root root      370160 Mar  1  2026  [01;32mcec-ctl[0m
+-rwxr-xr-x 1 root root      138024 Mar  1  2026  [01;32mcec-follower[0m
+-rwxr-xr-x 1 root root       14920 Mar 18  2026  [01;32mcert-to-efi-hash-list[0m
+-rwxr-xr-x 1 root root       14920 Mar 18  2026  [01;32mcert-to-efi-sig-list[0m
+-rwxr-xr-x 1 root root      191768 May 10 23:37  [01;32mcerttool[0m
+-rwxr-xr-x 1 root root      182920 Jun 14 22:05  [01;32mcertutil[0m
+-rwxr-xr-x 1 root root       96792 Jun 17 17:47  [01;32mcfdisk[0m
+-rwxr-xr-x 1 root root         214 Jul  7 13:56  [01;32mcffi-gen-src[0m
+-rwxr-xr-x 1 root root       18528 Apr 29 14:09  [01;32mcfitsio-imcopy[0m
+-rwxr-xr-x 1 root root       14424 Apr 29 14:09  [01;32mcfitsio-smem[0m
+-rwxr-xr-x 1 root root       18600 Apr 29 14:09  [01;32mcfitsio-speed[0m
+-rwxr-xr-x 1 root root       14416 Jun 30 12:04  [01;32mchacl[0m
+-rwsr-xr-x 1 root root       72344 Jun 16 20:56  [37;41mchage[0m
+-rwxr-xr-x 1 root root       30776 Jan 14  2025  [01;32mchat[0m
+-rwxr-xr-x 1 root root       14360 Mar 12  2026  [01;32mchattr[0m
+-rwxr-xr-x 1 root root       14424 Apr 10  2026  [01;32mchcp[0m
+-rwxr-xr-x 1 root root       30880 Jun 17 17:47  [01;32mchcpu[0m
+-rwxr-xr-x 1 root root       14424 Jun 16 20:32  [01;32mchdosattr[0m
+-rwxr-xr-x 1 root root      223608 Apr 26 02:54  [01;32mcheck-regexp[0m
+-rwxr-xr-x 1 root root       14424 Jul  5 21:36  [01;32mcheck-selftest[0m
+-rwxr-xr-x 1 root root       48688 Jun 13 20:18  [01;32mcheck_hd[0m
+-rwxr-xr-x 1 root root       10367 Jul  9 20:16  [01;32mcheck_lft_balance.pl[0m
+-rwxr-xr-x 1 root root        4165 Dec 13  2024  [01;32mcheckrebuild[0m
+-rwxr-xr-x 1 root root        4843 Dec 13  2025  [01;32mcheckupdates[0m
+-rwxr-xr-x 1 root root       28113 Mar 16  2026  [01;32mchem[0m
+-rwsr-xr-x 1 root root       26784 Jun 17 17:47  [37;41mchfn[0m
+-rwxr-xr-x 1 root root       55272 Jun 16 20:56  [01;32mchgpasswd[0m
+-rwxr-xr-x 1 root root       92472 Apr 24 10:49  [01;32mchgrp[0m
+-rwxr-xr-x 1 root root       43168 Jun 17 17:47  [01;32mchmem[0m
+-rwxr-xr-x 1 root root       88376 Apr 24 10:49  [01;32mchmod[0m
+-rwxr-xr-x 1 root root       30976 May  7 14:11  [01;32mchmorph[0m
+-rwxr-xr-x 1 root root       22688 Jun 17 17:47  [01;32mchoom[0m
+-rwxr-xr-x 1 root root       92472 Apr 24 10:49  [01;32mchown[0m
+-rwxr-xr-x 1 root root       72288 Jun 16 20:56  [01;32mchpasswd[0m
+-rwxr-xr-x 1 root root       67896 Apr 24 10:49  [01;32mchroot[0m
+-rwxr-xr-x 1 root root       30880 Jun 17 17:47  [01;32mchrt[0m
+-rwsr-xr-x 1 root root       22688 Jun 17 17:47  [37;41mchsh[0m
+-rwxr-xr-x 1 root root       14496 Jun  4 23:01  [01;32mchvt[0m
+-rwxr-xr-x 1 root root     2909736 Jul 14 04:44  [01;32mchwd[0m
+-rwxr-xr-x 1 root root      786904 Jul 14 04:44  [01;32mchwd-kernel[0m
+-rwxr-xr-x 1 root root       14432 Mar  9  2026  [01;32mcifs.idmap[0m
+-rwxr-xr-x 1 root root       43344 Mar  9  2026  [01;32mcifs.upcall[0m
+-rwxr-xr-x 1 root root       27024 Mar  9  2026  [01;32mcifscreds[0m
+-rwxr-xr-x 1 root root      166048 Jul  1 16:59  [01;32mcjpeg[0m
+-rwxr-xr-x 1 root root      223488 Jul 10 06:43  [01;32mcjxl[0m
+-rwxr-xr-x 1 root root      166200 Apr 24 10:49  [01;32mcksum[0m
+lrwxrwxrwx 1 root root           8 Jul  9 16:21  [01;36mclang[0m -> clang-22
+-rwxr-xr-x 1 root root      122168 Jul  9 16:21  [01;32mclang++[0m
+-rwxr-xr-x 1 root root      122264 Jul  9 16:21  [01;32mclang-22[0m
+-rwxr-xr-x 1 root root      103920 Jul  9 16:21  [01;32mclang-apply-replacements[0m
+-rwxr-xr-x 1 root root      208216 Jul  9 16:21  [01;32mclang-change-namespace[0m
+-rwxr-xr-x 1 root root       45168 Jul  9 16:21  [01;32mclang-check[0m
+-rwxr-xr-x 1 root root      122168 Jul  9 16:21  [01;32mclang-cl[0m
+-rwxr-xr-x 1 root root      122168 Jul  9 16:21  [01;32mclang-cpp[0m
+-rwxr-xr-x 1 root root     1228792 Jul  9 16:21  [01;32mclang-doc[0m
+-rwxr-xr-x 1 root root       39976 Jul  9 16:21  [01;32mclang-extdef-mapping[0m
+-rwxr-xr-x 1 root root       85464 Jul  9 16:21  [01;32mclang-format[0m
+-rwxr-xr-x 1 root root      396240 Jul  9 16:21  [01;32mclang-include-cleaner[0m
+-rwxr-xr-x 1 root root      177368 Jul  9 16:21  [01;32mclang-include-fixer[0m
+-rwxr-xr-x 1 root root      172064 Jul  9 16:21  [01;32mclang-installapi[0m
+-rwxr-xr-x 1 root root      180456 Jul  9 16:21  [01;32mclang-linker-wrapper[0m
+-rwxr-xr-x 1 root root      191888 Jul  9 16:21  [01;32mclang-move[0m
+-rwxr-xr-x 1 root root      106448 Jul  9 16:21  [01;32mclang-nvlink-wrapper[0m
+-rwxr-xr-x 1 root root       59976 Jul  9 16:21  [01;32mclang-offload-bundler[0m
+lrwxrwxrwx 1 root root          19 Jul  7 00:40  [01;36mclang-offload-packager[0m -> llvm-offload-binary
+-rwxr-xr-x 1 root root      146584 Jul  9 16:21  [01;32mclang-query[0m
+-rwxr-xr-x 1 root root       92592 Jul  9 16:21  [01;32mclang-refactor[0m
+-rwxr-xr-x 1 root root      101784 Jul  9 16:21  [01;32mclang-reorder-fields[0m
+-rwxr-xr-x 1 root root       66688 Jul  9 16:21  [01;32mclang-repl[0m
+-rwxr-xr-x 1 root root      193680 Jul  9 16:21  [01;32mclang-scan-deps[0m
+-rwxr-xr-x 1 root root       82376 Jul  9 16:21  [01;32mclang-sycl-linker[0m
+-rwxr-xr-x 1 root root     9857008 Jul  9 16:21  [01;32mclang-tidy[0m
+-rwxr-xr-x 1 root root    16007264 Jul  9 16:21  [01;32mclangd[0m
+-rwxr-xr-x 1 root root      104696 Dec 27  2025  [01;32mclassifier_tester[0m
+lrwxrwxrwx 1 root root          36 Jul 12 02:49  [01;36mclaude-desktop[0m -> ../lib/claude-desktop/claude-desktop
+-rwxr-xr-x 1 root root       14352 Mar 22  2026  [01;32mclear[0m
+-rwxr-xr-x 1 root root      139408 Apr  6  2026  [01;32mclinfo[0m
+-rwxr-xr-x 1 root root      127200 Sep  8  2025  [01;32mclit[0m
+-rwxr-xr-x 1 root root      220856 Nov  9  2025  [01;32mcllayerinfo[0m
+-rwxr-xr-x 1 root root       22624 Jun  6  2025  [01;32mclockdiff[0m
+-rwxr-xr-x 1 root root       14504 Jun  4 23:01  [01;32mclrunimap[0m
+-rwxr-xr-x 1 root root       14416 Jul  5 21:36  [01;32mcltest[0m
+-rwxr-xr-x 1 root root      174424 Jun  5 01:54  [01;32mcmis-client[0m
+-rwxr-xr-x 1 root root       43248 Apr 28  2025  [01;32mcmp[0m
+-rwxr-xr-x 1 root root       47280 Jun 14 22:05  [01;32mcmsutil[0m
+-rwxr-xr-x 1 root root       39120 Jul  9 20:16  [01;32mcmtime[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [01;32mcmx2raw[0m
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [01;32mcmx2text[0m
+-rwxr-xr-x 1 root root       18608 May 31 15:41  [01;32mcmx2xhtml[0m
+-rwxr-xr-x 1 root root       43240 Dec 27  2025  [01;32mcntraining[0m
+-rwxr-xr-x 1 root root         308 Oct 15 10:54  [01;32mcode[0m
+-rwxr-xr-x 1 root root       26888 Jan 11  2026  [01;32mcodiff[0m
+-rwxr-xr-x 1 root root       22688 Jun 17 17:47  [01;32mcol[0m
+-rwxr-xr-x 1 root root       18600 Jun 17 17:47  [01;32mcolcrt[0m
+-rwxr-xr-x 1 root root       14496 Jun 17 17:47  [01;32mcolrm[0m
+-rwxr-xr-x 1 root root       51368 Jun 17 17:47  [01;32mcolumn[0m
+-rwxr-xr-x 1 root root       63688 Dec 27  2025  [01;32mcombine_lang_model[0m
+-rwxr-xr-x 1 root root       26816 Dec 27  2025  [01;32mcombine_tessdata[0m
+-rwxr-xr-x 1 root root       63800 Apr 24 10:49  [01;32mcomm[0m
+lrwxrwxrwx 1 root root           6 Jul 14 04:24  [01;36mcompare[0m -> magick
+-rwxr-xr-x 1 root root        1343 Mar 12  2026  [01;32mcompile_et[0m
+-rwxr-xr-x 1 root root       26824 Jun  4  2025  [01;32mcomposefs-info[0m
+lrwxrwxrwx 1 root root           6 Jul 1

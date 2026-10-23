@@ -1,0 +1,24 @@
+[?5l[r[0m[H[2J[?25l-rwxr-xr-x 1 root root       22624 Jun  6  2025  [0;1;32mclockdiff[0m[K
+-rwxr-xr-x 1 root root       14504 Jun  4 23:01  [0;1;32mclrunimap[0m[K
+-rwxr-xr-x 1 root root       14416 Jul  5 21:36  [0;1;32mcltest[0m[K
+-rwxr-xr-x 1 root root      174424 Jun  5 01:54  [0;1;32mcmis-client[0m[K
+-rwxr-xr-x 1 root root       43248 Apr 28  2025  [0;1;32mcmp[0m[K
+-rwxr-xr-x 1 root root       47280 Jun 14 22:05  [0;1;32mcmsutil[0m[K
+-rwxr-xr-x 1 root root       39120 Jul  9 20:16  [0;1;32mcmtime[0m[K
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [0;1;32mcmx2raw[0m[K
+-rwxr-xr-x 1 root root       14512 May 31 15:41  [0;1;32mcmx2text[0m[K
+-rwxr-xr-x 1 root root       18608 May 31 15:41  [0;1;32mcmx2xhtml[0m[K
+-rwxr-xr-x 1 root root       43240 Dec 27  2025  [0;1;32mcntraining[0m[K
+-rwxr-xr-x 1 root root         308 Oct 15 10:54  [0;1;32mcode[0m[K
+-rwxr-xr-x 1 root root       26888 Jan 11  2026  [0;1;32mcodiff[0m[K
+-rwxr-xr-x 1 root root       22688 Jun 17 17:47  [0;1;32mcol[0m[K
+-rwxr-xr-x 1 root root       18600 Jun 17 17:47  [0;1;32mcolcrt[0m[K
+-rwxr-xr-x 1 root root       14496 Jun 17 17:47  [0;1;32mcolrm[0m[K
+-rwxr-xr-x 1 root root       51368 Jun 17 17:47  [0;1;32mcolumn[0m[K
+-rwxr-xr-x 1 root root       63688 Dec 27  2025  [0;1;32mcombine_lang_model[0m[K
+-rwxr-xr-x 1 root root       26816 Dec 27  2025  [0;1;32mcombine_tessdata[0m[K
+-rwxr-xr-x 1 root root       63800 Apr 24 10:49  [0;1;32mcomm[0m[K
+lrwxrwxrwx 1 root root           6 Jul 14 04:24  [0;1;36mcompare[0m -> magick[K
+-rwxr-xr-x 1 root root        1343 Mar 12  2026  [0;1;32mcompile_et[0m[K
+-rwxr-xr-x 1 root root       26824 Jun  4  2025  [0;1;32mcomposefs-info[0m[K
+lrwxrwxrwx 1 root root           6 Jul 1[K[24;41H[?25h[0m]8;;\[?2004l[?1003l[?1002l[?1001l[?1000l[?1004l[?1015l[?1006l[?1005l

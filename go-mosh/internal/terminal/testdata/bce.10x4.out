@@ -1,0 +1,10 @@
+size 10 4
+cursor 0 1 visible 1 wrapnext 0
+modes origin 0 autowrap 1 insert 0 reverse 0 paste 0 mouse 0 focus 0 altscroll 0 enc 0 appcursor 0
+scroll 0 3 pen [0;43m link 1b5d383b3b1b5c
+title  icon  clip  bell 0
+reply 
+row 0 0:59/0;43m 1:_/0;44m 2:_/0;44m 3:_/0;44m 4:_/0;44m 5:_/0;44m 6:_/0;44m 7:_/0;44m 8:_/0;44m 9:_/0;44m
+row 1 0:_/0;44m 1:_/0;44m 2:78/0;44m 3:_/0;44m 4:_/0;44m 5:_/0;44m 6:_/0;44m 7:_/0;44m 8:_/0;44m 9:_/0;44m
+row 2 0:_/0;45m 1:_/0;45m 2:_/0;45m 3:_/0;45m 4:_/0;45m 5:_/0;45m 6:_/0;45m 7:_/0;45m 8:_/0;45m 9:_/0;45m
+row 3 0:_/0;44m 1:_/0;44m 2:_/0;44m 3:_/0;44m 4:_/0;46m 5:_/0;44m 6:_/0;44m 7:_/0;44m 8:_/0;44m 9:_/0;44m

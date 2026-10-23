@@ -24,3 +24,20 @@ func TestSessionExpired(t *testing.T) {
 		}
 	}
 }
+
+func TestParseSize(t *testing.T) {
+	for _, c := range []struct {
+		args []string
+		w, h int
+	}{
+		{nil, 80, 24},
+		{[]string{"120x40"}, 120, 40},
+		{[]string{"0x40"}, 80, 24},
+		{[]string{"5000x40"}, 80, 24},
+		{[]string{"junk"}, 80, 24},
+	} {
+		if w, h := parseSize(c.args); w != c.w || h != c.h {
+			t.Errorf("parseSize(%v) = %dx%d, want %dx%d", c.args, w, h, c.w, c.h)
+		}
+	}
+}
