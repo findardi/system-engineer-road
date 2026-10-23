@@ -1,0 +1,64 @@
+size 12 6
+key 1b4f41
+sent 1
+key 20
+sent 2
+paint
+host 08
+key e4b8ad
+sent 3
+acked 1
+late 1
+paint
+paint
+key 68656c6c6f
+sent 4
+paint
+key 1b4f44
+sent 5
+interval 100
+key 1b5b44
+sent 6
+acked 3
+late 3
+interval 60
+key 65cc81
+sent 7
+paint
+key 1b4f43
+sent 8
+key 62
+sent 9
+paint
+paint
+interval 25
+key 68656c6c6f
+sent 10
+interval 20
+interval 20
+key 65cc81
+sent 11
+paint
+host 1b5b43
+paint
+host 
+host 1b5b376d
+paint
+key 0d
+sent 12
+key 1b4f41
+sent 13
+paint
+key 1b5b43
+sent 14
+interval 25
+interval 40
+host 20
+paint
+key 0d
+sent 15
+paint
+host 0d0a
+interval 60
+acked 5
+late 5

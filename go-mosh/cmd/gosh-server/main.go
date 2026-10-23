@@ -39,6 +39,7 @@ func main() {
 		err = runNew(os.Args[2:])
 	case "daemon":
 		err = runDaemon(os.Args[2:])
+	case "probe": // internal: the client checks the binary can run from this directory
 	case "relay": // internal: started by the client over SSH when UDP is blocked
 		if len(os.Args) != 3 {
 			err = fmt.Errorf("usage: gosh-server relay PORT")
@@ -173,13 +174,14 @@ func runDaemon(args []string) error {
 	}()
 
 	started := time.Now()
+	var lastRemoteNum uint64
 	for {
 		out := output
 		if t.ShutdownInProgress() {
 			out = nil
 		}
 
-		timer := time.NewTimer(t.WaitTime())
+		timer := time.NewTimer(min(t.WaitTime(), t.Current().EchoWait(time.Now())))
 		select {
 		case b, ok := <-out:
 			if !ok {
@@ -192,9 +194,10 @@ func runDaemon(args []string) error {
 				shell.Write(reply) // e.g. a cursor position report the program asked for
 			}
 		case d := <-conn.Incoming():
-			if t.Receive(d) != nil {
+			if t.Receive(d) != nil || t.RemoteStateNum() == lastRemoteNum {
 				break
 			}
+			lastRemoteNum = t.RemoteStateNum()
 
 			var input statesync.UserStream
 			input.Apply(t.RemoteDiff())
@@ -211,11 +214,19 @@ func runDaemon(args []string) error {
 			}
 
 			shell.Write(keys)
+			if len(input.Events()) > 0 && !t.ShutdownInProgress() {
+				// Echo-ack this input once the program has had time to echo it.
+				t.Current().RegisterInputFrame(lastRemoteNum, time.Now())
+			}
 
 		case <-timer.C:
 		}
 
 		timer.Stop()
+
+		if !t.ShutdownInProgress() {
+			t.Current().SetEchoAck(time.Now()) // a changed ack goes out with the next Tick
+		}
 
 		switch {
 		case t.ShutdownInProgress() && (t.ShutdownAcknowledged() || t.ShutdownAckTimedOut()):

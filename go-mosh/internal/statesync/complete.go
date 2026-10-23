@@ -1,6 +1,8 @@
 package statesync
 
 import (
+	"time"
+
 	"github.com/findardi/system-engineer-road/go-mosh/internal/pb/hostpb"
 	"github.com/findardi/system-engineer-road/go-mosh/internal/terminal"
 	"google.golang.org/protobuf/proto"
@@ -16,8 +18,18 @@ var diffDisplay = terminal.NewDisplay()
 // screen, so its size is bounded by the window, not by the program's output.
 type Complete struct {
 	emu     *terminal.Emulator
-	echoAck uint64 // newest user input the screen reflects; used by prediction
+	echoAck uint64       // newest user input the screen reflects; used by prediction
+	inputs  []inputFrame // server only: input frames waiting to be echo-acked
 }
+
+type inputFrame struct {
+	num uint64
+	at  time.Time
+}
+
+// echoTimeout gives the program time to echo input before the server
+// declares it echoed (or not).
+const echoTimeout = 50 * time.Millisecond
 
 func NewComplete(width, height int) *Complete {
 	return &Complete{emu: terminal.NewEmulator(width, height)}
@@ -33,7 +45,44 @@ func (c *Complete) Framebuffer() *terminal.Framebuffer { return c.emu.Framebuffe
 
 func (c *Complete) EchoAck() uint64 { return c.echoAck }
 
-func (c *Complete) Clone() *Complete { return &Complete{c.emu.Clone(), c.echoAck} }
+func (c *Complete) Clone() *Complete { return &Complete{emu: c.emu.Clone(), echoAck: c.echoAck} }
+
+// RegisterInputFrame notes that the user input of remote state n reached
+// the program at now.
+func (c *Complete) RegisterInputFrame(n uint64, now time.Time) {
+	c.inputs = append(c.inputs, inputFrame{n, now})
+}
+
+// SetEchoAck acks every input frame older than echoTimeout: the screen now
+// shows whatever echo the program was going to give. The client judges its
+// predictions against this. It reports whether the ack changed.
+func (c *Complete) SetEchoAck(now time.Time) bool {
+	var newest uint64
+	for _, f := range c.inputs {
+		if !f.at.After(now.Add(-echoTimeout)) {
+			newest = f.num
+		}
+	}
+	kept := c.inputs[:0]
+	for _, f := range c.inputs {
+		if f.num >= newest {
+			kept = append(kept, f)
+		}
+	}
+	c.inputs = kept
+	changed := c.echoAck != newest
+	c.echoAck = newest
+	return changed
+}
+
+// EchoWait is how long until the next input frame can be echo-acked. The
+// first entry is the one already acked.
+func (c *Complete) EchoWait(now time.Time) time.Duration {
+	if len(c.inputs) < 2 {
+		return time.Hour
+	}
+	return max(c.inputs[1].at.Add(echoTimeout).Sub(now), 0)
+}
 
 func (c *Complete) Equal(o *Complete) bool {
 	return c.echoAck == o.echoAck && c.Framebuffer().Equal(o.Framebuffer())

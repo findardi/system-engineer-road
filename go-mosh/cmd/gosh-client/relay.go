@@ -8,7 +8,10 @@ import (
 	"github.com/findardi/system-engineer-road/go-mosh/internal/network"
 )
 
-const relayScript = `exec "$HOME/.gosh/bin/$1" relay "$2"`
+const relayScript = `for d in ` + installDirs + `; do
+  [ -x "$d/$1" ] && [ -O "$d/$1" ] && "$d/$1" probe 2>/dev/null && exec "$d/$1" relay "$2"
+done
+exit 1`
 
 // relayDialer starts "gosh-server relay" over a new SSH session each time it
 // is called. With key or agent auth this reconnects silently after a network change.

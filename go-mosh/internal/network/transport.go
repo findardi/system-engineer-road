@@ -99,6 +99,16 @@ func (t *Transport[M, R]) Current() M { return t.current }
 // Remote is the newest state received from the peer.
 func (t *Transport[M, R]) Remote() R { return t.received[len(t.received)-1].state }
 
+// RemoteStateNum is the number of the newest remote state.
+func (t *Transport[M, R]) RemoteStateNum() uint64 { return t.received[len(t.received)-1].num }
+
+// SentStateLast is the newest state we sent; SentStateAcked the newest the peer acked.
+func (t *Transport[M, R]) SentStateLast() uint64  { return t.sent[len(t.sent)-1].num }
+func (t *Transport[M, R]) SentStateAcked() uint64 { return t.sent[0].num }
+
+// SendInterval is the current time between frames, in milliseconds.
+func (t *Transport[M, R]) SendInterval() int { return int(t.sendInterval()) }
+
 // RemoteDiff returns what changed in the remote state since the previous call.
 func (t *Transport[M, R]) RemoteDiff() []byte {
 	diff := t.Remote().DiffFrom(t.lastReceiver)

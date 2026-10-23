@@ -1,0 +1,98 @@
+size 32 9
+interval 10
+paint
+key 78
+sent 1
+key e4b8ad
+sent 2
+paint
+interval 100
+key 0d
+sent 3
+key 20
+sent 4
+host 1b5b333b3348
+paint
+key 68656c6c6f
+sent 5
+key 0d
+sent 6
+interval 40
+interval 25
+acked 0
+late 0
+host 1b5b4b
+paint
+acked 2
+late 1
+paint
+host 78
+host 1b5b313b33316d
+acked 3
+late 2
+key 0d
+sent 7
+paint
+acked 4
+late 2
+interval 250
+interval 20
+paint
+acked 6
+late 4
+paint
+paint
+interval 100
+key e4b8ad
+sent 8
+key 65cc81
+sent 9
+pref adaptive
+paint
+paint
+pref experimental
+paint
+host 1b5b324a1b5b48
+host e4b8ad
+interval 25
+key 78
+sent 10
+interval 10
+host 0d0a
+key 1b5b43
+sent 11
+key 09
+sent 12
+key 7f
+sent 13
+host 20
+key 68656c6c6f
+sent 14
+key 1b4f41
+sent 15
+paint
+host 68656c6c6f
+key 1b4f44
+sent 16
+host 1b5b306d
+host 0d0a
+paint
+host 0d0a
+key 1b5b44
+sent 17
+paint
+interval 10
+paint
+paint
+paint
+paint
+key 0d
+sent 18
+key 1b5b43
+sent 19
+key 20
+sent 20
+acked 7
+late 6
+host 1b5b313b33316d
+interval 25

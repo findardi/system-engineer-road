@@ -1,0 +1,42 @@
+size 34 7
+key 78
+sent 1
+paint
+interval 60
+paint
+host 78
+paint
+key 62
+sent 2
+host 62
+key 1b4f43
+sent 3
+key 1b4f44
+sent 4
+acked 0
+late 0
+host 1b5b43
+paint
+host 0d0a
+key 1b5b44
+sent 5
+paint
+acked 0
+late 0
+host 1b5b4b
+paint
+acked 2
+late 0
+acked 3
+late 2
+host 
+pref always
+acked 5
+late 3
+key 78
+sent 6
+paint
+key 1b5b44
+sent 7
+acked 7
+late 3

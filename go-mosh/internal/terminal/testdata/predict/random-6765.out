@@ -1,0 +1,12 @@
+frame cursor 0 0
+frame cursor 0 0
+frame cursor 0 1
+row 0 0:78
+frame cursor 0 3
+row 0 0:78 1:62
+frame cursor 1 0
+row 0 0:78 1:62
+frame cursor 1 0
+row 0 0:78 1:62
+frame cursor 0 2
+row 0 0:78 1:78/0;4m 2:62/0;4m

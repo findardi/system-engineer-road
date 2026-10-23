@@ -23,26 +23,54 @@ var arches = map[string]string{
 	"Linux aarch64": "linux-arm64",
 }
 
-const runScript = `b="$HOME/.gosh/bin/$1"
-[ -x "$b" ] && exec "$b" new "$2"
+// installDirs are tried in order: home may be mounted noexec, so fall back
+// to the runtime dir and /tmp. A directory must be ours, so nobody else can
+// swap the binary (a pre-created /tmp/gosh-UID is skipped).
+const installDirs = `"$HOME/.gosh/bin" ${XDG_RUNTIME_DIR:+"$XDG_RUNTIME_DIR/gosh"} "/tmp/gosh-$(id -u)"`
+
+// Remote scripts run under sh explicitly: the user's login shell may be fish/zsh.
+// $1 = binary name; run: $2 = window size; install: $2 = sha256, $3 = window size.
+// "probe" proves the binary can execute there, which [ -x ] cannot tell on noexec.
+const runScript = `for d in ` + installDirs + `; do
+  b="$d/$1"
+  [ -x "$b" ] && [ -O "$b" ] && "$b" probe 2>/dev/null && exec "$b" new "$2"
+done
 echo "GOSH NEED $(uname -sm)"`
 
 const installScript = `set -e
 umask 077
-d="$HOME/.gosh/bin"; b="$d/$1"
-mkdir -p "$d"; chmod 700 "$HOME/.gosh" "$d"
-cat > "$b.tmp"
-[ "$(sha256sum < "$b.tmp" | cut -d" " -f1)" = "$2" ] || { rm -f "$b.tmp"; echo "gosh: checksum mismatch" >&2; exit 1; }
-chmod 700 "$b.tmp"
-mv "$b.tmp" "$b"
-exec "$b" new "$3"`
+src=
+for d in ` + installDirs + `; do
+  mkdir -p "$d" 2>/dev/null && [ -O "$d" ] && chmod 700 "$d" || continue
+  t="$d/$1.tmp"
+  if [ -z "$src" ]; then
+    src="$t"
+    cat > "$src"
+    [ "$(sha256sum < "$src" | cut -d" " -f1)" = "$2" ] || { rm -f "$src"; echo "gosh: checksum mismatch" >&2; exit 1; }
+  elif ! cp "$src" "$t"; then
+    continue
+  fi
+  chmod 700 "$t"
+  if "$t" probe 2>/dev/null; then
+    mv "$t" "$d/$1"
+    rm -f "$src"
+    for f in "$d"/gosh-server-*; do # old versions, unless a live session still runs one
+      [ "$f" = "$d/$1" ] || pgrep -f "$f" >/dev/null || rm -f "$f"
+    done
+    exec "$d/$1" new "$3"
+  fi
+  [ "$t" = "$src" ] || rm -f "$t"
+done
+rm -f "$src"
+echo "gosh: no directory on the server can run programs (all mounted noexec?)" >&2
+exit 1`
 
 var connectRe = regexp.MustCompile(`^GOSH CONNECT (\d+) ([A-Za-z0-9/+]{22})$`)
 
 type session struct {
 	IP, Port, Key string
 	Width, Height int    // window size at start: the initial screen on both sides
-	Server        string // binary name in ~/.gosh/bin, needed to start the relay
+	Server        string // binary name in installDirs, needed to start the relay
 }
 
 func bootstrap(ssh []string, host string, width, height int) (session, error) {

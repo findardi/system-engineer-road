@@ -1,0 +1,32 @@
+size 16 4
+paint
+acked 0
+late 0
+paint
+acked 0
+late 0
+paint
+acked 0
+late 0
+acked 0
+late 0
+interval 40
+key 61
+sent 1
+interval 250
+key e4b8ad
+sent 2
+key 78
+sent 3
+key 78
+sent 4
+key 65cc81
+sent 5
+key 7f
+sent 6
+paint
+interval 25
+paint
+paint
+paint
+host 1b5b4b
