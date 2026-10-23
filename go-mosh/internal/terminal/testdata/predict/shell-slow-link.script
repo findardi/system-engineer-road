@@ -1,0 +1,39 @@
+size 40 4
+interval 250
+host 2420
+paint
+key 6c
+sent 1
+paint
+key 73
+sent 2
+paint
+key 20
+sent 3
+paint
+key 2d
+sent 4
+paint
+key 6c
+sent 5
+paint
+host 6c73202d6c
+acked 5
+late 5
+paint
+key 7f
+sent 6
+paint
+key 7f
+sent 7
+paint
+host 082008082008
+acked 7
+late 7
+paint
+key 0d
+sent 8
+paint
+host 0d0a66696c6531202066696c65320d0a2420
+late 8
+paint

@@ -1,0 +1,27 @@
+[r[0m[H[2J[?25l{[K
+  for ( int col = start; col <= end; col++ ) {[K
+...skipping...[K
+      }[K
+      if ( set_title ) {[K
+        fb->set_window_title( newtitle );[K
+      }[K
+    }[K
+  }[K
+}[K
+[K
+/* scroll down or terminfo indn */[K
+static void CSI_SD( Framebuffer* fb, Dispatcher* dispatch )[K
+{[K
+  fb->scroll( dispatch->getparam( 0, 1 ) );[K
+}[K
+[K
+static Function func_CSI_SD( CSI, "S", CSI_SD );[K
+[K
+/* scroll up or terminfo rin */[K
+static void CSI_SU( Framebuffer* fb, Dispatcher* dispatch )[K
+{[K
+  fb->scroll( -dispatch->getparam( 0, 1 ) );[K
+}[K
+[K
+static Function func_CSI_SU( CSI, "T", CSI_SU );[K
+[0;7m(END)[0m[K[27;6H[?25h[0m]8;;\[?2004l[?1003l[?1002l[?1001l[?1000l[?1004l[?1015l[?1006l[?1005l

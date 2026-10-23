@@ -1,0 +1,19 @@
+frame cursor 0 0
+frame cursor 0 0
+frame cursor 2 1
+frame cursor 2 1
+frame cursor 2 0
+frame cursor 2 0
+frame cursor 2 0
+frame cursor 2 0
+frame cursor 2 1
+frame cursor 2 0
+frame cursor 2 3
+row 1 0:20
+row 2 1:e4b8ad/W
+frame cursor 2 12
+row 1 0:20
+row 2 1:e4b8ad/W 3:c3a9 4:61 10:20 11:20 12:20
+frame cursor 2 11
+row 1 0:20
+row 2 1:e4b8ad/W 3:c3a9 4:61 10:20 11:20

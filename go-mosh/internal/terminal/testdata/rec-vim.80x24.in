@@ -1,0 +1,27 @@
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;24r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[24;1HE325: ATTENTION
+Found a swap file by the name "/home/ardis/project/shell-project/mosh/src/termi
+[23;80Hn[24;1Hal/.parser.cc.swp"
+[10Cowned by: ardis   dated: Thu Oct 22 16:28:42 2026
+[9Cfile name: /home/ardis/project/shell-project/mosh/src/terminal/parser.
+[23;80Hc[24;1Hc
+[10Cmodified: YES
+[9Cuser name: ardis   host name: panemumsi2
+[8Cprocess ID: 82511
+While opening file "/home/ardis/project/shell-project/mosh/src/terminal/parser.
+[23;80Hc[24;1Hc"
+[13Cdated: Mon Sep 14 16:27:41 2026
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r /home/ardis/project/shell-pr
+[23;80Ho[24;1Hject/mosh/src/terminal/parser.cc"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file "/home/ardis/project/shell-pr
+[23;80Ho[24;1Hject/mosh/src/terminal/.parser.cc.swp"
+    to avoid this message.
+-- More --[?25h SPACE/d/j: screen/page/line down, b/u/k: up, q: quit[24;1H[K[24;1H
+Swap file "/home/ardis/project/shell-project/mosh/src/terminal/.parser.cc.swp"
+[23;80Ha[24;1Hlready exists!
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)uit, (A)bort:

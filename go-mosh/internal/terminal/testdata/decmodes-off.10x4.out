@@ -1,0 +1,6 @@
+size 10 4
+cursor 0 0 visible 1 wrapnext 0
+modes origin 0 autowrap 1 insert 0 reverse 0 paste 1 mouse 9 focus 0 altscroll 1 enc 0 appcursor 1
+scroll 0 3 pen [0m link 1b5d383b3b1b5c
+title  icon  clip  bell 0
+reply 

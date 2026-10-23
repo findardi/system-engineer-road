@@ -1,0 +1,23 @@
+[?5l[r[0m[H[2J[?25l* [0;33mdecd9b7 ([0;1;36mHEAD[0;33m -> [0;1;32mmaster[0;33m, [0;1;31morigin/master[0;33m, [0;1;31morigin/HEAD[0;33m)[0m Addressing last review c[1;80Homments[K
+* [0;33m1af6b30[0m Address review comments for PR #1360[K
+* [0;33m24afb12[0m Fix several compile errors found by CI[K
+* [0;33m396bddf[0m Add missed clearing of the hyperlink in reset()[K
+* [0;33m148bd18[0m Rework params handling for OSC 8 hyperlinks[K
+* [0;33m440ff1e[0m Add a test for OSC 8 hyperlink support[K
+* [0;33m0618218[0m Add OSC8 hyperlink support[K
+* [0;33mb5775df[0m prng: support getrandom & getentropy[K
+* [0;33m8e47206[0m select: use SA_RESTART with signals[K
+* [0;33m3f91cce[0m client: drop NACL check[K
+* [0;33m5f5d35c[0m Run apt update before apt install[K
+* [0;33mb245486[0m gitignore: add config.cache[K
+* [0;33mee757a2[0m Fix compile failure on MacOS X[K
+* [0;33m64ce9aa[0m Drop the -pedantic flag from CXX_FLAGS[K
+* [0;33m59e3aa9[0m Upgrade ubuntu runners (+2y)[K
+* [0;33mf7b350f[0m Remove Benjamin Barenblat from Debian uploaders[K
+*   [0;33m9c4e59a[0m Merge pull request #1366 from irbeam256/fedora-docs[K
+[0;32m|[0;33m\[0m  [K
+[0;32m|[0m * [0;33mad655d8[0m Add Fedora/RHEL dependencies to the README[K
+[0;32m|/[0m  [K
+*   [0;33m2f3fff6[0m Merge pull request #1363 from eminence/fix_ci[K
+[0;34m|[0;35m\[0m  [K
+:[K[24;2H[?25h[0m]8;;\[?2004l[?1003l[?1002l[?1001l[?1000l[?1004l[?1015l[?1006l[?1005l

@@ -1,0 +1,168 @@
+[?1049h[22;0;0t[24;1H[?1h=/*[m
+    Mosh: the mobile shell[m
+    Copyright 2012 Keith Winstein[m
+[m
+    This program is free software: you can redistribute it and/or modify[m
+    it under the terms of the GNU General Public License as published by[m
+    the Free Software Foundation, either version 3 of the License, or[m
+    (at your option) any later version.[m
+[m
+    This program is distributed in the hope that it will be useful,[m
+    but WITHOUT ANY WARRANTY; without even the implied warranty of[m
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the[m
+    GNU General Public License for more details.[m
+[m
+    You should have received a copy of the GNU General Public License[m
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.[m
+[m
+    In addition, as a special exception, the copyright holders give[m
+    permission to link the code of portions of this program with the[m
+    OpenSSL library under certain conditions as described in each[m
+    individual source file, and distribute linked combinations including[m
+    the two.[m
+[m
+[7m/home/ardis/project/shell-project/mosh/src/terminal/terminalfunctions.cc[27m[K[K    You must obey the GNU General Public License in all respects for all[m
+    of the code used other than OpenSSL. If you modify file(s) with this[m
+    exception, you may extend this exception to your version of the[m
+    file(s), but you are not obligated to do so. If you do not wish to do[m
+    so, delete this exception statement from your version. If you delete[m
+    this exception statement from all source files in the program, then[m
+    also delete it here.[m
+*/[m
+[m
+#include <algorithm>[m
+#include <cstdio>[m
+#include <string>[m
+#include <utility>[m
+#include <vector>[m
+[m
+#include <unistd.h>[m
+[m
+#include "src/terminal/parseraction.h"[m
+#include "src/terminal/terminalframebuffer.h"[m
+#include "terminaldispatcher.h"[m
+[m
+using namespace Terminal;[m
+[m
+:[K[K/* Terminal functions -- routines activated by CSI, escape or a control char */[m
+[m
+static void clearline( Framebuffer* fb, int row, int start, int end )[m
+{[m
+  for ( int col = start; col <= end; col++ ) {[m
+    fb->reset_cell( fb->get_mutable_cell( row, col ) );[m
+  }[m
+}[m
+[m
+/* erase in line */[m
+static void CSI_EL( Framebuffer* fb, Dispatcher* dispatch )[m
+{[m
+  switch ( dispatch->getparam( 0, 0 ) ) {[m
+    case 0: /* default: active position to end of line, inclusive */[m
+      clearline( fb, -1, fb->ds.get_cursor_col(), fb->ds.get_width() - 1 );[m
+      break;[m
+    case 1: /* start of screen to active position, inclusive */[m
+      clearline( fb, -1, 0, fb->ds.get_cursor_col() );[m
+      break;[m
+    case 2: /* all of line */[m
+      fb->reset_row( fb->get_mutable_row( -1 ) );[m
+      break;[m
+    default:[m
+:[K[K[HM[m
+[HMusing namespace Terminal;[m
+[HM[m
+[HM#include "terminaldispatcher.h"[m
+[HM#include "src/terminal/terminalframebuffer.h"[m
+[HM#include "src/terminal/parseraction.h"[m
+[HM[m
+[HM#include <unistd.h>[m
+[HM[m
+[HM#include <vector>[m
+[HM#include <utility>[m
+[HM#include <string>[m
+[HM#include <cstdio>[m
+[HM#include <algorithm>[m
+[HM[m
+[HM*/[m
+[HM    also delete it here.[m
+[HM    this exception statement from all source files in the program, then[m
+[HM    so, delete this exception statement from your version. If you delete[m
+[HM    file(s), but you are not obligated to do so. If you do not wish to do[m
+[HM    exception, you may extend this exception to your version of the[m
+[HM    of the code used other than OpenSSL. If you modify file(s) with this[m
+[HM    You must obey the GNU General Public License in all respects for all[m
+[24;1H[K:[K[K/[Kss[Ktt[Kaa[Ktt[Kee[K[1;1H[K    You must obey the GNU General Public License in all respects for all[m
+[2;1H[K    of the code used other than OpenSSL. If you modify file(s) with this[m
+[3;1H[K    exception, you may extend this exception to your version of the[m
+[4;1H[K    file(s), but you are not obligated to do so. If you do not wish to do[m
+[5;1H[K    so, delete this exception statement from your version. If you delete[m
+[6;1H[K    this exception statement from all source files in the program, then[m
+[7;1H[K    also delete it here.[m
+[8;1H[K*/[m
+[9;1H[K[m
+[10;1H[K#include <algorithm>[m
+[11;1H[K#include <cstdio>[m
+[12;1H[K#include <string>[m
+[13;1H[K#include <utility>[m
+[14;1H[K#include <vector>[m
+[15;1H[K[m
+[16;1H[K#include <unistd.h>[m
+[17;1H[K[m
+[18;1H[K#include "src/terminal/parseraction.h"[m
+[19;1H[K#include "src/terminal/terminalframebuffer.h"[m
+[20;1H[K#include "terminaldispatcher.h"[m
+[21;1H[K[m
+[22;1H[Kusing namespace Terminal;[m
+[23;1H[K[m
+[24;1H[1;1H[K    You must obey the GNU General Public License in all respects for all[m
+[2;1H[K    of the code used other than OpenSSL. If you modify file(s) with this[m
+[3;1H[K    exception, you may extend this exception to your version of the[m
+[4;1H[K    file(s), but you are not obligated to do so. If you do not wish to do[m
+[5;1H[K    so, delete this exception [7mstate[27mment from your version. If you delete[m
+[6;1H[K    this exception [7mstate[27mment from all source files in the program, then[m
+[7;1H[K    also delete it here.[m
+[8;1H[K*/[m
+[9;1H[K[m
+[10;1H[K#include <algorithm>[m
+[11;1H[K#include <cstdio>[m
+[12;1H[K#include <string>[m
+[13;1H[K#include <utility>[m
+[14;1H[K#include <vector>[m
+[15;1H[K[m
+[16;1H[K#include <unistd.h>[m
+[17;1H[K[m
+[18;1H[K#include "src/terminal/parseraction.h"[m
+[19;1H[K#include "src/terminal/terminalframebuffer.h"[m
+[20;1H[K#include "terminaldispatcher.h"[m
+[21;1H[K[m
+[22;1H[Kusing namespace Terminal;[m
+[23;1H[K[m
+[24;1H/* Terminal functions -- routines activated by CSI, escape or a control char */[m
+[m
+static void clearline( Framebuffer* fb, int row, int start, int end )[m
+{[m
+:[K[K/[K  for ( int col = start; col <= end; col++ ) {[m
+:[K[K...skipping...
+      }[m
+      if ( set_title ) {[m
+        fb->set_window_title( newtitle );[m
+      }[m
+    }[m
+  }[m
+}[m
+[m
+/* scroll down or terminfo indn */[m
+static void CSI_SD( Framebuffer* fb, Dispatcher* dispatch )[m
+{[m
+  fb->scroll( dispatch->getparam( 0, 1 ) );[m
+}[m
+[m
+static Function func_CSI_SD( CSI, "S", CSI_SD );[m
+[m
+/* scroll up or terminfo rin */[m
+static void CSI_SU( Framebuffer* fb, Dispatcher* dispatch )[m
+{[m
+  fb->scroll( -dispatch->getparam( 0, 1 ) );[m
+}[m
+[m
+static Function func_CSI_SU( CSI, "T", CSI_SU );[m
+[7m(END)[27m[K

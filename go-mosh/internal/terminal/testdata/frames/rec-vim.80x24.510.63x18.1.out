@@ -1,0 +1,13 @@
+[r[0m[H[2J[?25l    be careful not to end up with two different instances of t[1;63Hhe same[K
+    file when making changes.  Quit, or continue with caution.[K
+(2) An edit session for this file crashed.[K
+    If this is the case, use ":recover" or "vim -r /home/ardis[5;63H/project/shell-pr[K
+ject/mosh/src/terminal/parser.cc"[29X[7;63Ho
+    to recover the changes (see ":help recovery").[K
+    If you did this already, delete the swap file "/home/ardis[9;63H/project/shell-pr[K
+ject/mosh/src/terminal/.parser.cc.swp"[24X[11;63Ho
+    to avoid this message.[K
+[K
+Swap file "/home/ardis/project/shell-project/mosh/src/terminal[14;63H/.parser.cc.swp"[K
+lready exists![48X[16;63Ha
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)ui[17;63Ht, (A)bort:[K[18;11H[?25h[0m]8;;\[?2004h[?1003l[?1002l[?1001l[?1000l[?1004h[?1015l[?1006l[?1005l

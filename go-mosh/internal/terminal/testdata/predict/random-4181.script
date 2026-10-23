@@ -1,0 +1,49 @@
+size 24 7
+pref adaptive
+key 09
+sent 1
+host 2420
+key 1b4f41
+sent 2
+host 1b5b43
+acked 0
+late 0
+key 61
+sent 3
+interval 40
+key 62
+sent 4
+key 65cc81
+sent 5
+key 1b5b44
+sent 6
+key 03
+sent 7
+acked 0
+late 0
+acked 2
+late 1
+host 1b5b306d
+interval 25
+host 1b5b324a1b5b48
+paint
+key 68656c6c6f
+sent 8
+key 62
+sent 9
+key 20
+sent 10
+host 0d0a
+interval 250
+paint
+host 09
+paint
+host 1b5b333b3348
+host 
+key c3a9
+sent 11
+acked 2
+late 2
+key 09
+sent 12
+host 61
