@@ -22,7 +22,7 @@ const escapeKey = 0x1e
 func main() {
 	sshCmd := flag.String("ssh", "ssh", "ssh command, e.g \"ssh -p 2222\"")
 	flag.Usage = func() {
-		fmt.Fprintln(os.Stderr, "usage: gosh-client [-ssh CMD] [user@]host")
+		fmt.Fprintln(os.Stderr, "usage: gosh [-ssh CMD] [user@]host")
 	}
 	flag.Parse()
 
